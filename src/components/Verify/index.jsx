@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import btn1 from "../../Images/btn1.png";
 import btn2 from "../../Images/btn2.png";
 

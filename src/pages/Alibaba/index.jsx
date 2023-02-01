@@ -49,7 +49,7 @@ import fr from "../../Images/fr.png";
 import gb from "../../Images/gb.png";
 
 import {
-  Main,
+  
   Mainul,
   BGCard,
   Loguser,
@@ -80,7 +80,6 @@ import { Supplier } from "../../sections/Supplier/index";
 import { Subscribe } from "../../components/Subscribe/index";
 import { Footer } from "../../components/Footer/index";
 import { Request } from "../../sections/Request/index";
-import ToggleButton from "../../components/ToggleButton";
 import { Header } from "./../../components/Header/index";
 
 function Alibaba() {

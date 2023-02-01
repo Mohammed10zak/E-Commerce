@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import * as yup from "yup";
 
-import google from "../../Images/google.svg";
-import facebook from "../../Images/facebook.svg";
+import { FormFooter } from "../../components/FormFooter";
+
+
+
 import {
   CheckedInputWrapper,
   ErrorMessage,
   InputWrapper,
   Register,
   StyledForm,
-  
   SubmitButton,
 } from "./../Signup/style";
-import { FormFooter } from "../../components/FormFooter";
 import {
   AlredyAccount,
   FormFootersignin,
@@ -20,13 +20,16 @@ import {
   StyledButton,
   StyledImg,
   StyledLinkhome,
-  StyledOR,StyledLink
+  StyledOR,
+  StyledLink,
 } from "./style";
+
+import google from "../../Images/google.svg";
+import facebook from "../../Images/facebook.svg";
 
 const initialData = {
   username: "mhmdkhzak",
   password: "mhmd123",
-  checked: false,
 };
 
 const regularExpression =
@@ -77,13 +80,13 @@ function Signin() {
       setIsLoading(true);
       setErrors([]);
       await schema.validate(formData, { abortEarly: false });
-      setMyData((prevState) => ({
+      setMyData({
         myData: {
-          name: prevState.name,
-          password: prevState.password,
-          checked: prevState.checked,
+          name: username,
+          password: password,
+          checked: checked,
         },
-      }));
+      });
     } catch (error) {
       if (error.errors) {
         setErrors({ errors: error.errors });
@@ -113,7 +116,7 @@ function Signin() {
             type="text"
             id="username"
             onChange={handleChangeInput}
-            value={username}
+            value={myData.username}
             placeholder="Email or phone"
           />
         </InputWrapper>
@@ -124,7 +127,7 @@ function Signin() {
             type={passwordType}
             id="password"
             onChange={handleChangeInput}
-            value={password}
+            value={myData.password}
             placeholder="Type Here"
           />
           <ShowPassword

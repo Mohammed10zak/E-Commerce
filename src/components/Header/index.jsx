@@ -7,7 +7,7 @@ import cart from "../../Images/cart.svg";
 import heart from "../../Images/heart.svg";
 import category from "../../Images/category.svg";
 import almany from "../../Images/almany.svg";
-import { Setting, StyledNav, Settings } from "./../style";
+import { Setting, Settings } from "./../style";
 import { StyledNav1, Search, StyledNav2, UL, Lang } from "./style";
 import ToggleButton from "../ToggleButton";
 import { NavLink } from "react-router-dom";
@@ -39,8 +39,7 @@ export const Header = () => {
           </Setting>
           <Setting>
             <NavLink to="/cartpage">
-
-            <img src={cart} alt={"cart"} />
+              <img src={cart} alt={"cart"} />
             </NavLink>
             <p>My cart</p>
           </Setting>
@@ -74,7 +73,7 @@ export const Header = () => {
           <select>
             <option>Ship to </option>
           </select>
-            <img src={almany} alt="almany" />
+          <img src={almany} alt="almany" />
         </Lang>
       </StyledNav2>
     </header>

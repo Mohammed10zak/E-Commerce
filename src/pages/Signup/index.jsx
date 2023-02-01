@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { FormFooter } from "../../components/FormFooter";
 import { AlredyAccount, ShowPassword, StyledLink } from "../Signin/style";
-import { CheckedInputWrapper, ErrorMessage, InputFullName, InputWrapper, Line, PhoneInputWrapper, Register, StyledForm, SubmitButton } from "./style";
+import {
+  CheckedInputWrapper,
+  ErrorMessage,
+  InputFullName,
+  InputWrapper,
+  Line,
+  PhoneInputWrapper,
+  Register,
+  StyledForm,
+  SubmitButton,
+} from "./style";
 
 const initialData = {
   name: "mhmd",
@@ -10,7 +20,6 @@ const initialData = {
   email: "mhmd@gsg.com",
   phone: "05987654",
   password: "mhmd123",
-  checked: false,
   selectedOption: "UN +967",
 };
 
@@ -94,17 +103,17 @@ function Signup() {
       setIsLoading(true);
       setErrors([]);
       await schema.validate(formData, { abortEarly: false });
-      setMyData((prevState) => ({
+      setMyData({
         myData: {
-          name: prevState.name,
-          email: prevState.email,
-          password: prevState.password,
-          confirmpass: prevState.confirmpass,
-          checked: prevState.checked,
-          selectedOption: prevState.selectedOption,
-          phone: prevState.phone,
+          name: name,
+          email: email,
+          password: password,
+          confirmpass: confirmpass,
+          checked: checked,
+          selectedOption: selectedOption,
+          phone: phone,
         },
-      }));
+      });
     } catch (error) {
       if (error.errors) {
         setErrors({ errors: error.errors });
@@ -126,7 +135,7 @@ function Signup() {
             <div key={index}>{error}</div>
           ))}
         </ErrorMessage>
-<p>{isLoading}</p>
+        <p>{isLoading}</p>
         <InputFullName>
           <div>
             <label htmlFor="name">Name</label>
@@ -134,7 +143,7 @@ function Signup() {
               type="text"
               id="name"
               onChange={handleChangeInput}
-              value={name}
+              value={myData.name}
               placeholder="Type here"
             />
           </div>
@@ -144,7 +153,7 @@ function Signup() {
               type="text"
               id="surname"
               onChange={handleChangeInput}
-              value={surname}
+              value={myData.surname}
               placeholder="Type here"
             />
           </div>
@@ -156,7 +165,7 @@ function Signup() {
             type="email"
             id="email"
             onChange={handleChangeInput}
-            value={email}
+            value={myData.email}
             placeholder="example@mail.com"
           />
         </InputWrapper>
@@ -165,7 +174,7 @@ function Signup() {
           <select
             name="phoneA"
             id="phoneA"
-            value={selectedOption}
+            value={myData.selectedOption}
             onChange={handleChangeInput}
           >
             <option>UZ +998</option>
@@ -176,7 +185,7 @@ function Signup() {
             type="tel"
             id="phone"
             onChange={handleChangeInput}
-            value={phone}
+            value={myData.phone}
             placeholder="00-000-00-00"
           />
         </PhoneInputWrapper>
@@ -187,7 +196,7 @@ function Signup() {
             type={passwordType}
             id="password"
             onChange={handleChangeInput}
-            value={password}
+            value={myData.password}
             placeholder="At least 6 characters."
           />
           <ShowPassword
@@ -218,15 +227,18 @@ function Signup() {
             onChange={handleChangeInput}
             checked={checked}
           />
-          <label htmlFor="checked">I agree to the <span>Terms and Conditions</span></label>
+          <label htmlFor="checked">
+            I agree to the <span>Terms and Conditions</span>
+          </label>
         </CheckedInputWrapper>
-        <Line><div></div></Line>
-        
-        <AlredyAccount>Already have an accaunt?
-  <StyledLink to="/signin"> Logn in</StyledLink>
-</AlredyAccount>
+        <Line>
+          <div></div>
+        </Line>
 
-              
+        <AlredyAccount>
+          Already have an accaunt?
+          <StyledLink to="/signin"> Logn in</StyledLink>
+        </AlredyAccount>
       </StyledForm>
       <FormFooter />
     </div>

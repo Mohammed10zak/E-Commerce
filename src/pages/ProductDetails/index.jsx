@@ -29,7 +29,6 @@ import related5 from "../../Images/related5.png";
 import related6 from "../../Images/related6.png";
 
 import {
-  Aboutprod,
   Additional,
   AdditionalFeatures,
   AllRelated,
