@@ -26,7 +26,7 @@ import {
   Total,
 } from "./style";
 import { MyCart } from "../../sections/MyCart";
-import { SaveforlaterProd } from "../../sections/SaveforlaterProd";
+import { SaveforlaterProd } from "../../sections/SaveforlaterProd/SaveforlaterProd";
 import logo from "../../Images/logo.svg";
 import profile from "../../Images/profile.svg";
 import msg from "../../Images/msg.svg";
@@ -36,7 +36,6 @@ import heart from "../../Images/heart.svg";
 import teshirt from "../../Images/tshirt.png";
 import bagg from "../../Images/bagg.png";
 import rasm from "../../Images/rasm.png";
-import { SaveBtn } from "./../../sections/style";
 import backbtn from "../../Images/back.png";
 import pay1 from "../../Images/pay1.png";
 import pay2 from "../../Images/pay2.png";
@@ -52,13 +51,14 @@ import forlater3 from "../../Images/forlater3.png";
 import forlater4 from "../../Images/forlater4.png";
 import { Footer } from "../../components/Footer";
 import { Discount } from './../../components/Discount';
+import ToggleButton from './../../components/ToggleButton';
+import { SaveBtn } from "../../sections/MyCart/style";
 
 
 function Cart() {
   return (
     <div>
-    <CartPage>
-      <StyledNavCart>
+       <StyledNavCart>
         <StyledImgLogo src={logo} />
         <Settings>
           <Setting>
@@ -77,8 +77,11 @@ function Cart() {
             <img src={cart} alt={"cart"} />
             <p>My cart</p>
           </Setting>
+          <ToggleButton />
         </Settings>
       </StyledNavCart>
+    <CartPage>
+     
 
       <SillCart>
         <AllCarts>

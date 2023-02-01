@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../components/Header";
-import { SideBar } from "../../components/SideBar";
-import Verify from "../../components/Verify";
+import { SideBar } from "../../components/SideBar/index";
+import Verify from "../../components/Verify/index";
 import { Mainstore, Store } from "./../TechStorelist/style";
 
 import imgcard1 from "../../Images/imgstore1.png";
@@ -13,11 +13,11 @@ import imgcard6 from "../../Images/imgcard6.png";
 import imgcard7 from "../../Images/imgcard7.png";
 import x from "../../Images/x.png";
 
-import { ElectronicCard } from "./../../sections/ElectronicCard";
+import { ElectronicCard } from "../../sections/ElectronicCard";
 import { Subscribe } from "../../components/Subscribe";
 import { Footer } from "../../components/Footer";
 import { AllKinds, ElectronicCards, Fillters } from "./style";
-import { StyledLink } from "./../Signup/style";
+import { StyledLink } from "../Signin/style";
 
 function Electronic() {
   return (

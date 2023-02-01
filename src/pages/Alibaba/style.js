@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const Main = styled.div``;
 
 export const BGCard = styled.div`
-width: 1200px;
-height: 420px;
+  background-color: ${(props) => props.theme.pallet.cart};
+
+  width: 1350px;
+  height: 420px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 20px auto;
-  background: #ffffff;
   border: 1px solid #e3e8ee;
   border-radius: 6px;
 
@@ -16,15 +16,15 @@ height: 420px;
     position: relative;
   }
   img {
-    width: 720px;
-    height: 415px;
+    width: 820px;
+    height: 410px;
   }
 `;
 export const Trending = styled.p`
   position: absolute;
   width: 253px;
   height: 39px;
-  left: 50px;
+  left: 120px;
   top: 50px;
 
   font-family: "Arial";
@@ -41,8 +41,8 @@ export const Trending = styled.p`
 `;
 export const LearnButton = styled.button`
   position: absolute;
-  left: 50px;
-  top: 190px;
+  left: 120px;
+  top: 150px;
   padding: 10px;
   border: none;
 
@@ -54,15 +54,18 @@ export const LearnButton = styled.button`
 export const Mainul = styled.ul`
   list-style-type: none;
   li {
-    width: 150px;
-    height: 22px;
+    width: 240px;
+    height: 35px;
 
     text-align: left;
     padding: 10px;
+    margin-top: 8px;
     border-radius: 6px;
 
     &:hover {
       background: #e5f1ff;
+      color: ${(props) => props.theme.pallet.page};
+      color:black;
     }
   }
 `;
@@ -79,7 +82,7 @@ export const Userdiv = styled.div`
 
   align-items: center;
   margin-top: 10px;
-  width: 180px;
+  width: 220px;
   height: 170px;
 
   background: #e3f0ff;
@@ -90,9 +93,13 @@ export const Userinfo = styled.div`
   display: flex;
   justify-content: space-around;
   img {
-    margin: 8px 0 0 8px;
+    margin: 1px 0 0 8px;
     width: 70px;
     height: 70px;
+  }
+  p {
+    margin: 10px 0 0 2px;
+    color: black;
   }
 `;
 
@@ -123,8 +130,8 @@ export const Sales = styled.div`
   background-color: ${(props) => (!props.pColor ? "#55BDC4" : "#f38332")};
 
   border-radius: 6px;
-  width: 160px;
-  height: 80px;
+  width: 220px;
+  height: 100px;
 
   p {
     width: 130px;
@@ -137,11 +144,11 @@ export const Sales = styled.div`
 `;
 
 export const Dailyoffers = styled.div`
-  padding: 10px;
-  width: 1180px;
-  height: 240px;
+  background-color: ${(props) => props.theme.pallet.cart};
 
-  background: #ffffff;
+  padding: 10px;
+  width: 1350px;
+  height: 240px;
 
   margin: 0 auto;
   border: 1px solid #e3e8ee;
@@ -151,48 +158,13 @@ export const Dailyoffers = styled.div`
 `;
 
 export const Marketing = styled.div`
-
+  position: relative;
   display: flex;
-  width: 1203px;
+  width: 1350px;
   height: 302px;
   margin: 20px auto;
-
   border: 1px solid #e0e0e0;
   border-radius: 6px;
-`;
-export const Sourcep = styled.p`
-  position: absolute;
-  width: 130px;
-  height: 52px;
-  left: 195px;
-  top: 1200px;
-
-  font-family: "Arial";
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 26px;
-  letter-spacing: -0.2px;
-  color: #1c1c1c;
-`;
-
-export const Sourcebtn = styled.button`
-  position: absolute;
-  left: 190px;
-  top: 1320px;
-
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-
-  font-family: "Arial";
-  font-weight: 700;
-  font-size: 16px;
-
-  line-height: 19px;
-  text-align: center;
-
-  background-color: #ffffff;
-  color: #1c1c1c;
 `;
 
 export const ProductContainer = styled.div`
@@ -200,13 +172,15 @@ export const ProductContainer = styled.div`
 `;
 export const Recommendeditems = styled.div`
   h2 {
+    margin-top: 80px;
+
     font-family: "Arial";
     font-weight: 600;
     font-size: 24px;
     line-height: 32px;
   }
-
-  width: 1203px;
+  margin-top: 20px;
+  width: 1350px;
   margin: 0 auto;
 `;
 
@@ -215,8 +189,8 @@ export const ItemContainer = styled.div`
   gap: 20px;
 `;
 export const Services = styled.div`
-  margin: 0 auto;
-  width: 1200px;
+  margin: 20px auto;
+  width: 1350px;
   display: flex;
   flex-direction: column;
 
@@ -227,7 +201,7 @@ export const Services = styled.div`
     line-height: 32px;
     letter-spacing: -0.2px;
 
-    color: #1c1c1c;
+    color: ${(props) => props.theme.pallet.main};
   }
 `;
 
@@ -244,10 +218,11 @@ export const Suppliers = styled.div`
     line-height: 32px;
 
     letter-spacing: -0.2px;
-
-    color: #1c1c1c;
+    margin-bottom: 40px;
+    color: ${(props) => props.theme.pallet.main};
   }
-  width: 1200px;
+  padding: 16px 0;
+  width: 1340px;
   margin: 0 auto;
 `;
 

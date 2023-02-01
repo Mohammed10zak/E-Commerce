@@ -1,19 +1,8 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import {
-  CheckedInputWrapper,
-  InputWrapper,
-  SubmitButton,
-  ShowPassword,
-  PhoneInputWrapper,
-  ErrorMessage,
-  InputFullName,
-  Register,
-  StyledForm,
-  Line,
-  AlredyAccount,
-  StyledLink,
-} from "./style";
+import { FormFooter } from "../../components/FormFooter";
+import { AlredyAccount, ShowPassword, StyledLink } from "../Signin/style";
+import { CheckedInputWrapper, ErrorMessage, InputFullName, InputWrapper, Line, PhoneInputWrapper, Register, StyledForm, SubmitButton } from "./style";
 
 const initialData = {
   name: "mhmd",
@@ -139,7 +128,7 @@ function Signup() {
         </ErrorMessage>
 <p>{isLoading}</p>
         <InputFullName>
-          <InputWrapper>
+          <div>
             <label htmlFor="name">Name</label>
             <input
               type="text"
@@ -148,8 +137,8 @@ function Signup() {
               value={name}
               placeholder="Type here"
             />
-          </InputWrapper>
-          <InputWrapper>
+          </div>
+          <div>
             <label htmlFor="surname">Surname</label>
             <input
               type="text"
@@ -158,7 +147,7 @@ function Signup() {
               value={surname}
               placeholder="Type here"
             />
-          </InputWrapper>
+          </div>
         </InputFullName>
 
         <InputWrapper>
@@ -239,6 +228,7 @@ function Signup() {
 
               
       </StyledForm>
+      <FormFooter />
     </div>
   );
 }

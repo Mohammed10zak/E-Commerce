@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./../../components/Header";
+import { Header } from "../../components/Header";
 
 import clothing from "../../Images/clothing.png";
 import clothing1 from "../../Images/clothing1.png";
@@ -69,11 +69,11 @@ import {
   SupplierInfo,
   SupplierProfile,
 } from "./style";
-import {  Rating } from "../../sections/style";
-import { MayProduct } from "../../sections/MayProduct";
 import { RelatedProducts } from "../../sections/RelatedProducts";
-import { Discount } from "../../components/Discount";
+import { Discount } from "../../components/Discount/index";
 import { Footer } from "../../components/Footer";
+import { Rating } from "../../sections/StroeCard/style";
+import { MayProduct } from "../../sections/MayProduct/index";
 function ProductDetails() {
   return (
     <ProdDetails>
@@ -129,7 +129,7 @@ function ProductDetails() {
             </LargePeace>
           </Peaces>
 
-          <Aboutprod>
+          <div>
             <Price>
               <PTitle>Price: </PTitle>
               <PDesc>Negotiable</PDesc>
@@ -166,7 +166,7 @@ function ProductDetails() {
                 <PDesc>2 years full warranty </PDesc>
               </Info>
             </MoreInfo>
-          </Aboutprod>
+          </div>
         </Description>
         <div>
           <SupplierProfile>

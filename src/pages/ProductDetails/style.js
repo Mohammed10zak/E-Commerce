@@ -8,8 +8,9 @@ export const Information = styled.div`
   margin-top: 20px;
   display: flex;
   padding: 40px;
-  width: 1250px;
-  background: #ffffff;
+  width: 1350px;
+  background-color: ${(props) => props.theme.pallet.cart};
+
   border: 1px solid #e3e8ee;
   border-radius: 6px;
   gap: 50px;
@@ -40,6 +41,7 @@ export const Statistic = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  margin: 10px 0;
 
   img {
     vertical-align: middle;
@@ -49,9 +51,10 @@ export const Statistic = styled.div`
 `;
 
 export const Description = styled.div`
+  width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 `;
 export const Stock = styled.span`
   line-height: 24px;
@@ -67,7 +70,7 @@ export const ClothisTitle = styled.h4`
   line-height: 28px;
   letter-spacing: -0.2px;
   margin-top: 8px;
-  color: #1c1c1c;
+  color: ${(props) => props.theme.pallet.main};
 `;
 
 export const Peaces = styled.div`
@@ -79,11 +82,18 @@ export const Peaces = styled.div`
   padding: 10px;
   height: 72px;
   background: #fff0df;
+  color: ${(props) => props.theme.pallet.main};
 `;
 
 export const SmallPeace = styled.div`
-  padding: 10px;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
   border-right: 1px solid #bdc1c8;
+
   p {
     font-size: 18px;
     line-height: 2px;
@@ -97,8 +107,13 @@ export const SmallPeace = styled.div`
   }
 `;
 export const MideamPeace = styled.div`
-  padding: 10px;
-
+  width: 100px;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  color: #787a80;
   border-right: 1px solid #bdc1c8;
 
   p {
@@ -114,7 +129,14 @@ export const MideamPeace = styled.div`
 `;
 export const LargePeace = styled.div`
   padding: 10px;
-  width: 90px;
+  width: 100px;
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  color: #787a80;
+
   p {
     font-size: 18px;
     line-height: 2px;
@@ -127,10 +149,10 @@ export const LargePeace = styled.div`
   }
 `;
 
-export const Aboutprod = styled.div``;
 export const Price = styled.div`
   display: flex;
   gap: 90px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #e0e0e0;
 `;
 
@@ -139,19 +161,22 @@ export const PTitle = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 10px;
+  margin-bottom: 20px;
 
-  color: #8b96a5;
+  color: ${(props) => props.theme.pallet.main};
 `;
 export const PDesc = styled.p`
   width: 180px;
+  margin-bottom: 16px;
 
   font-weight: 400;
   font-size: 16px;
-  color: #505050;
+  color: ${(props) => props.theme.pallet.grey};
 `;
 
 export const MoreInfo = styled.div`
   border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 12px;
 `;
 
 export const Info = styled.div`
@@ -181,10 +206,9 @@ export const Supplier = styled.div`
   border-bottom: 1px solid #e0e0e0;
 
   div {
-    margin-top: 10px;
     padding: 10px;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     text-align: center;
     font-weight: 600;
     font-size: 28px;
@@ -252,7 +276,7 @@ export const SillerButton = styled.button`
 `;
 
 export const Save = styled.div`
-  margin: 20px 0 0 100px;
+  margin: 30px 0 0 90px;
   img {
     vertical-align: middle;
   }
@@ -267,14 +291,16 @@ export const Save = styled.div`
 
 export const Descriptions = styled.div`
   display: flex;
-  gap:30px;
+  gap: 30px;
 `;
 export const DescriptionProd = styled.div`
   margin: 20px 0 0 85px;
-  padding: 20px;
-  width: 960px;
-  height: 630px;
-  background: #ffffff;
+  padding: 30px;
+  width: 1020px;
+
+  height: 780px;
+  background-color: ${(props) => props.theme.pallet.cart};
+
   border: 1px solid #e3e8ee;
 
   box-shadow: 0px 1px 3px rgba(56, 56, 56, 0.1);
@@ -282,7 +308,8 @@ export const DescriptionProd = styled.div`
 `;
 export const Nav = styled.nav`
   display: flex;
-  gap: 10px;
+  gap: 30px;
+
   border-bottom: 1px solid #8b96a5;
 `;
 
@@ -291,11 +318,11 @@ export const StyleLink = styled(Link)`
   text-decoration: none;
   border-bottom: none;
   font-family: "Arial";
-  padding: 10px;
+  padding: 12px 0;
   line-height: 19px;
   text-align: center;
+  color: ${(props) => props.theme.pallet.grey};
 
-  color: #8b96a5;
   &:active {
     color: #0d6efd;
     border-bottom: 1px solid blue;
@@ -310,12 +337,12 @@ export const Content = styled.p`
   line-height: 24px;
 
   letter-spacing: -0.2px;
-
-  color: #505050;
+  margin-top: 10px;
+  color: ${(props) => props.theme.pallet.grey};
 `;
 
 export const Preferances = styled.div`
-  margin-bottom: 40px;
+  margin: 20px 0;
 `;
 
 export const ProductProps = styled.div`
@@ -323,19 +350,19 @@ export const ProductProps = styled.div`
 `;
 export const PProps = styled.p`
   width: 200px;
-  padding: 10px;
-  text-left: center;
-  background: #eff2f4;
+  padding: 20px;
+  text-align: center;
+  background-color: ${(props) => props.theme.pallet.cart};
+
   font-family: "Arial";
-  margin-bottom: -16px;
   border: 1px solid #8b96a5;
 `;
 export const Props = styled.p`
   width: 300px;
-  padding: 10px;
-  text-left: center;
+  padding: 20px;
+
+  text-align: left;
   font-family: "Arial";
-  margin-bottom: -16px;
   border: 1px solid #8b96a5;
 `;
 
@@ -352,7 +379,8 @@ export const Additional = styled.div`
 
     letter-spacing: -0.2px;
 
-    color: #505050;
+    color: ${(props) => props.theme.pallet.main};
+
     margin-left: 10px;
   }
 `;
@@ -360,12 +388,13 @@ export const Additional = styled.div`
 export const PossipleProd = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 10px;
-  margin-top:20px;
-  width: 280px;
-  height: 580px;
-  background: #ffffff;
+  gap: 16px;
+  padding: 30px;
+  margin-top: 20px;
+  width: 300px;
+  height: 640px;
+  background-color: ${(props) => props.theme.pallet.cart};
+
   border: 1px solid #e3e8ee;
   border-radius: 6px;
   h4 {
@@ -373,40 +402,37 @@ export const PossipleProd = styled.div`
     font-weight: 600;
     font-size: 16px;
     line-height: 1px;
-    color: #1c1c1c;
+    color: ${(props) => props.theme.pallet.main};
   }
 `;
 
-export const Related=styled.div`
+export const Related = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 1350px;
+  height: 350px;
 
+  background-color: ${(props) => props.theme.pallet.cart};
 
+  border: 1px solid #e3e8ee;
+  border-radius: 6px;
+  h4 {
+    font-family: "Arial";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    padding: 10px;
 
-display:flex;
-flex-direction: column;
-padding:10px;
-margin:0 auto;
-margin-top:20px;
-width: 1315px;
-height: 380px;
+    letter-spacing: -0.2px;
+    color: ${(props) => props.theme.pallet.main};
 
-background: #FFFFFF;
-border: 1px solid #E3E8EE;
-border-radius: 6px;
-h4{
-  font-family: 'Arial';
-font-weight: 600;
-font-size: 20px;
-line-height: 28px;
-padding:10px;
+  }
+`;
 
-letter-spacing: -0.2px;
-color: #1C1C1C;
-
-}
-
-`
-
-export const AllRelated= styled.div`
-display:flex;
-justify-content:space-around;
-`
+export const AllRelated = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;

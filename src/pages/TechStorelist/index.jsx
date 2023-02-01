@@ -1,8 +1,8 @@
 import { Header } from "../../components/Header";
 import Verify from "../../components/Verify";
 import { StroeCard } from "../../sections/StroeCard";
-import { SideBar } from "./../../components/SideBar";
-import { Footer } from "./../../components/Footer";
+import { SideBar } from "../../components/SideBar/index";
+import { Footer } from "../../components/Footer";
 
 import imgcard1 from "../../Images/imgstore1.png";
 import imgcard2 from "../../Images/imgstore2.png";
@@ -11,7 +11,7 @@ import imgcard4 from "../../Images/imgstore4.png";
 import imgcard5 from "../../Images/imgstore5.png";
 
 import { Mainstore, Store, StoreCards } from "./style";
-import { Subscribe } from "./../../components/Subscribe";
+import { Subscribe } from "../../components/Subscribe";
 
 function TechStoreList() {
   return (
@@ -61,7 +61,6 @@ function TechStoreList() {
             />
           </StoreCards>
         </div>
-        
       </Mainstore>
       <Subscribe />
       <Footer />

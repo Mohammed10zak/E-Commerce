@@ -16,6 +16,7 @@ import home from "../../Images/home1.png";
 import chair from "../../Images/chair.png";
 import chair1 from "../../Images/chair1.png";
 import chair2 from "../../Images/chair2.png";
+
 import gra from "../../Images/gra.png";
 import blinder from "../../Images/blinder.png";
 import mixer from "../../Images/mixer.png";
@@ -62,8 +63,6 @@ import {
   Dailyoffers,
   Marketing,
   ProductContainer,
-  Sourcep,
-  Sourcebtn,
   Recommendeditems,
   ItemContainer,
   AllServices,
@@ -71,22 +70,22 @@ import {
   Suppliers,
   AllSuppliers,
 } from "./style";
-import { Offers } from "../../sections/Offers";
-import { Dealsandoffer } from "../../sections/Dealsandoffer";
-import { Source } from "../../sections/Source";
-import { Product } from "./../../sections/Product";
-import { Recommendeditem } from "../../sections/Recommendeditem";
-import { Service } from "../../sections/Service";
-import { Supplier } from "../../sections/Supplier";
-import { Subscribe } from "../../components/Subscribe";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
-import { BgReq } from "../../sections/style";
-import { Request } from './../../sections/Request';
+import { Offers } from "../../sections/Offer/index";
+import { Dealsandoffer } from "../../sections/Dealsandoffer/index";
+import { Source } from "../../sections/Sources/Source";
+import { Product } from "../../sections/Product";
+import { Recommendeditem } from "../../sections/Recommendeditem/index";
+import { Service } from "../../sections/Service/index";
+import { Supplier } from "../../sections/Supplier/index";
+import { Subscribe } from "../../components/Subscribe/index";
+import { Footer } from "../../components/Footer/index";
+import { Request } from "../../sections/Request/index";
+import ToggleButton from "../../components/ToggleButton";
+import { Header } from "./../../components/Header/index";
 
 function Alibaba() {
   return (
-    <Main>
+    <div>
       <Header />
 
       <BGCard>
@@ -102,9 +101,9 @@ function Alibaba() {
           <li>More category</li>
         </Mainul>
         <div>
-        <img src={bgmain} alt="bgmain" />
-        <Trending>Latest trending Electronic items</Trending>
-        <LearnButton type="submit">Learn more</LearnButton>
+          <img src={bgmain} alt="bgmain" />
+          <Trending>Latest trending Electronic items</Trending>
+          <LearnButton type="submit">Learn more</LearnButton>
         </div>
         <Loguser>
           <Userdiv>
@@ -154,7 +153,12 @@ function Alibaba() {
       </Dailyoffers>
 
       <Marketing>
-        <Source img={home} alt="home" title="Home and outdoor" />
+        <Source
+          img={home}
+          alt="home"
+          title="Home and outdoor"
+          btn="Source now"
+        />
         <div>
           <ProductContainer>
             <Product title="Soft chairs" price="From USD 19" img={chair} />
@@ -176,9 +180,13 @@ function Alibaba() {
       </Marketing>
 
       <Marketing>
-        <Source img={source} alt="source" />
-        <Sourcep> Consumer electronics and gadgets</Sourcep>
-        <Sourcebtn type="submit">Source now</Sourcebtn>
+        <Source
+          img={source}
+          alt="source"
+          title="Consumer electronics and gadgets"
+          btn="Source now"
+        />
+
         <div>
           <ProductContainer>
             <Product title="Smart watches" price="From USD 19" img={watch} />
@@ -205,9 +213,8 @@ function Alibaba() {
             />
           </ProductContainer>
         </div>
-
       </Marketing>
-        <Request />
+      <Request />
       <Recommendeditems>
         <h2>Recommended items</h2>
         <div>
@@ -371,7 +378,7 @@ function Alibaba() {
       </Suppliers>
       <Subscribe />
       <Footer />
-    </Main>
+    </div>
   );
 }
 

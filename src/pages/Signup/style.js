@@ -2,14 +2,18 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const StyledForm = styled.form`
-  padding: 20px;
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 400px;
-  box-shadow: 0px 3px 10px rgba(32, 32, 32, 0.1);
-  border-radius: 6px;
+
+gap: 10px;
+display: flex;
+flex-direction: column;
+margin: 40px auto;
+width: 400px;
+border: 1px solid #789;
+box-shadow: 0px 3px 10px rgba(32, 32, 32, 0.1);
+border-radius: 6px;
+padding: 20px;
+background: ${(props) => props.theme.pallet.cart};
+
 `;
 
 export const Register = styled.h3`
@@ -19,14 +23,22 @@ export const Register = styled.h3`
 `;
 
 export const InputFullName = styled.div`
-display: flex;
-input {
-  width: 157px;
-  border:none
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  outline:none
-}
+  display: flex;
+  margin-left: 10px;
+  gap: 10px;
+  label {
+    margin-top: 10px;
+    display: block;
+  }
+  input {
+    width: 157px;
+    padding: 10px;
+
+    border: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    outline: none;
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -43,6 +55,7 @@ export const InputWrapper = styled.div`
     letter-spacing: -0.2px;
   }
   input {
+    width: 322px;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -90,7 +103,7 @@ export const PhoneInputWrapper = styled.div`
     letter-spacing: -0.2px;
   }
   input {
-    width: 240px;
+    width: 200px;
     padding: 10px;
     border: 1px solid #ccc;
     font-size: 14px;
@@ -107,14 +120,10 @@ export const PhoneInputWrapper = styled.div`
   }
 `;
 
-export const ShowPassword = styled.div`
-  margin-top: 5px;
-  font-size: 12px;
-  cursor: pointer;
-`;
+
 
 export const SubmitButton = styled.button`
-  width: 380px;
+  width: 325px;
   margin-left: 10px;
   color: white;
   background: #0d6efd;
@@ -132,7 +141,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const Line = styled.div`
-  width: 380px;
+  width: 325px;
 
   background-color: #a9acb0;
   height: 2px;
@@ -150,72 +159,3 @@ export const ErrorMessage = styled.div`
   font-family: "Arial";
   width: 290px;
 `;
-
-export const StyledOR = styled.div`
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-  backgroud-color: red;
-  font-size: 18px;
-  font-family: "Arial";
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  div {
-    width: 180px;
-    background-color: #a9acb0;
-    height: 2px;
-    margin-top: 10px;
-    box-shadow: 0px 3px 10px rgba(32, 32, 32, 0.1);
-    border-radius: 6px;
-  }
-  span {
-    color: #a9acb0;
-    padding: 0 10px;
-  }
-`;
-
-export const AlredyAccount = styled.div`
-  font-family: "Arial";
-  font-size: 18px;
-  color: #a9acb0;
-
-  margin: auto;
-  margin-top: 10px;
-
-  text-decoration: none;
-`;
-
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: #0d6efd;
-  &:hover {
-    color: #0058o4;
-  }
-`;
-
-export const StyledImg = styled.img`
-  height: 20px;
-  width: 20px;
-  margin-right: 10px;
-`;
-
-export const StyledButton = styled.button`
-  display: flex;
-  align-items: center;
-  gap: 85px;
-  padding: 10px 20px;
-  color: #606060;
-  cursor: pointer;
-  background-color: ${(props) => (!props.facebook ? "#3b5998" : "#ffffff")};
-  color: ${(props) => (!props.facebook ? "#ffffff" : "#222")};
-
-  border: 1px solid #e0e0e0;
-  box-shadow: 0px 1px 3px rgba(56, 56, 56, 0.1);
-  border-radius: 6px;
-  font-size: 16px;
-`;
-
-export const StyledLinkhome = styled(Link)`
-text-decoration: none;
-  color: #ffffff;
-`

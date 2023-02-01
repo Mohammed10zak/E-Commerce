@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import * as yup from "yup";
-import {
-  InputWrapper,
-  Register,
-  StyledOR,
-  SubmitButton,
-  StyledForm,
-  ErrorMessage,
-  ShowPassword,
-  CheckedInputWrapper,
-  StyledImg,
-  StyledButton,
-  AlredyAccount,
-  StyledLinkhome,
-} from "../Signup/style";
+
 import google from "../../Images/google.svg";
 import facebook from "../../Images/facebook.svg";
-import { StyledLink } from "./../Signup/style";
+import {
+  CheckedInputWrapper,
+  ErrorMessage,
+  InputWrapper,
+  Register,
+  StyledForm,
+  
+  SubmitButton,
+} from "./../Signup/style";
+import { FormFooter } from "../../components/FormFooter";
+import {
+  AlredyAccount,
+  FormFootersignin,
+  ShowPassword,
+  StyledButton,
+  StyledImg,
+  StyledLinkhome,
+  StyledOR,StyledLink
+} from "./style";
 
 const initialData = {
   username: "mhmdkhzak",
@@ -141,8 +146,7 @@ function Signin() {
         </CheckedInputWrapper>
 
         <SubmitButton type="submit" disabled={isLoading}>
-          <StyledLinkhome to="/alibaba">Log In
-          </StyledLinkhome>
+          <StyledLinkhome to="/alibaba">Log In</StyledLinkhome>
         </SubmitButton>
         <StyledOR>
           <div></div> <span>OR</span> <div></div>
@@ -163,6 +167,9 @@ function Signin() {
           <StyledLink to="/signup"> Register now</StyledLink>
         </AlredyAccount>
       </StyledForm>
+      <FormFootersignin>
+        <FormFooter />
+      </FormFootersignin>
     </div>
   );
 }
