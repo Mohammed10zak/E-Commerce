@@ -3,7 +3,6 @@ import rightpagination from "../Images/right.png";
 import leftpagination from "../Images/left.png";
 import {
   PaginationContainer,
-  PaginationImage,
   PaginationNumber,
   PaginationSelect,
 } from "./style";
