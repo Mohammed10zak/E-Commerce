@@ -79,6 +79,7 @@ import {
   Suppliers,
   AllSuppliers,
 } from "./style";
+import { NavLink } from "react-router-dom";
 
 function Alibaba() {
   return (
@@ -110,9 +111,12 @@ function Alibaba() {
                 Hi,user <p> lets get stated</p>
               </p>
             </Userinfo>
-
-            <Joinbutton type="submit">Join Now</Joinbutton>
-            <GoLogButton type="submit">Log in</GoLogButton>
+            <NavLink to="/signup">
+              <Joinbutton type="submit">Join Now</Joinbutton>
+            </NavLink>
+            <NavLink to="/signin">
+              <GoLogButton type="submit">Log in</GoLogButton>
+            </NavLink>
           </Userdiv>
 
           <Sales pColor={true}>

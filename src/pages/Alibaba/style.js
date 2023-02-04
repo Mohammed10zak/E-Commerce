@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const BGCard = styled.div`
   background-color: ${(props) => props.theme.pallet.cart};
 
@@ -20,7 +19,6 @@ export const BGCard = styled.div`
     width: 820px;
     height: 400px;
   }
-  
 `;
 export const Trending = styled.p`
   position: absolute;
@@ -67,7 +65,7 @@ export const Mainul = styled.ul`
     &:hover {
       background: #e5f1ff;
       color: ${(props) => props.theme.pallet.page};
-      color:black;
+      color: black;
     }
   }
 `;
@@ -114,6 +112,7 @@ export const Joinbutton = styled.button`
   border: 1px solid #0d6efd;
   border-radius: 6px;
   border: none;
+  cursor: pointer;
 `;
 
 export const GoLogButton = styled.button`
@@ -125,6 +124,7 @@ export const GoLogButton = styled.button`
   background: #ffffff;
   border: 1px solid #e3e8ee;
   border-radius: 6px;
+  cursor: pointer;
 `;
 
 export const Sales = styled.div`
