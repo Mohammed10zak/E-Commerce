@@ -16,9 +16,11 @@ export const BGCard = styled.div`
     position: relative;
   }
   img {
+    margin-top: 10px;
     width: 820px;
-    height: 410px;
+    height: 400px;
   }
+  
 `;
 export const Trending = styled.p`
   position: absolute;

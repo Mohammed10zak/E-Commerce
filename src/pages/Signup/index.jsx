@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as yup from "yup";
 import { FormFooter } from "../../components/FormFooter";
-import { AlredyAccount, ShowPassword, StyledLink } from "../Signin/style";
+import { AlredyAccount, StyledLink } from "../Signin/style";
 import {
   CheckedInputWrapper,
   ErrorMessage,
@@ -38,7 +38,6 @@ function Signup() {
   const [confirmpass, setConfirmpass] = useState("");
   const [checked, setChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("UZ +998");
-  const [passwordType, setPasswordType] = useState("password");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [myData, setMyData] = useState(initialData);
@@ -46,12 +45,12 @@ function Signup() {
   const schema = yup.object().shape({
     name: yup
       .string()
-      .min(6, "Name must be at least 6 characters long")
+      .min(6, "Name must be at least 6 characters")
       .max(16, "Name must be no more than 16 characters")
       .required("Name is required"),
     surname: yup
       .string()
-      .min(6, "Name must be at least 6 characters long")
+      .min(6, "Name must be at least 6 characters")
       .max(16, "Name must be no more than 16 characters")
       .required("Name is required"),
     phone: yup.string().matches(phoneRegExp, "Phone number is not valid"),
@@ -102,10 +101,12 @@ function Signup() {
       };
       setIsLoading(true);
       setErrors([]);
-      await schema.validate(formData, { abortEarly: false });
+      await schema.validate(formData, { abortEarly: false }, { myData });
       setMyData({
         myData: {
           name: name,
+          surname: surname,
+
           email: email,
           password: password,
           confirmpass: confirmpass,
@@ -114,12 +115,9 @@ function Signup() {
           phone: phone,
         },
       });
-    } catch (error) {
-      if (error.errors) {
-        setErrors({ errors: error.errors });
-      } else {
-        setErrors({ errors: [error.message] });
-      }
+    } catch (err) {
+      setIsLoading(false);
+      setErrors(err.inner);
     }
 
     setIsLoading(false);
@@ -130,11 +128,6 @@ function Signup() {
       <StyledForm onSubmit={handleSubmit}>
         <Register>Register</Register>
 
-        <ErrorMessage>
-          {Object.values(errors).map((error, index) => (
-            <div key={index}>{error}</div>
-          ))}
-        </ErrorMessage>
         <p>{isLoading}</p>
         <InputFullName>
           <div>
@@ -143,19 +136,30 @@ function Signup() {
               type="text"
               id="name"
               onChange={handleChangeInput}
-              value={myData.name}
+              value={name}
               placeholder="Type here"
             />
+            {errors.find((error) => error.path === "name") && (
+              <ErrorMessage>
+                {errors.find((error) => error.path === "name").message}
+              </ErrorMessage>
+            )}
           </div>
+
           <div>
             <label htmlFor="surname">Surname</label>
             <input
               type="text"
               id="surname"
               onChange={handleChangeInput}
-              value={myData.surname}
+              value={surname}
               placeholder="Type here"
             />
+            {errors.find((error) => error.path === "surname") && (
+              <ErrorMessage>
+                {errors.find((error) => error.path === "surname").message}
+              </ErrorMessage>
+            )}
           </div>
         </InputFullName>
 
@@ -165,48 +169,59 @@ function Signup() {
             type="email"
             id="email"
             onChange={handleChangeInput}
-            value={myData.email}
+            value={email}
             placeholder="example@mail.com"
           />
+          {errors.find((error) => error.path === "email") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "email").message}
+            </ErrorMessage>
+          )}
         </InputWrapper>
         <PhoneInputWrapper>
           <label htmlFor="phone">Phone</label>
           <select
             name="phoneA"
             id="phoneA"
-            value={myData.selectedOption}
+            value={selectedOption}
             onChange={handleChangeInput}
           >
             <option>UZ +998</option>
             <option>UZ +997</option>
             <option>UN +967</option>
           </select>
+
           <input
             type="tel"
             id="phone"
             onChange={handleChangeInput}
-            value={myData.phone}
+            value={phone}
             placeholder="00-000-00-00"
           />
+          {errors.find((error) => error.path === "phone") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "phone").message}
+            </ErrorMessage>
+          )}
         </PhoneInputWrapper>
 
         <InputWrapper>
           <label htmlFor="password">Password:</label>
           <input
-            type={passwordType}
+            type={"password"}
             id="password"
             onChange={handleChangeInput}
-            value={myData.password}
+            value={password}
             placeholder="At least 6 characters."
           />
-          <ShowPassword
-            onClick={() =>
-              setPasswordType(passwordType === "password" ? "text" : "password")
-            }
-          >
-            Show Password
-          </ShowPassword>
+
+          {errors.find((error) => error.path === "password") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "password").message}
+            </ErrorMessage>
+          )}
         </InputWrapper>
+
         <InputWrapper>
           <label htmlFor="confirmpass">Confirm Password:</label>
           <input
@@ -216,6 +231,11 @@ function Signup() {
             value={confirmpass}
             placeholder="Type here"
           />
+          {errors.find((error) => error.path === "confirmpass") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "confirmpass").message}
+            </ErrorMessage>
+          )}
         </InputWrapper>
         <SubmitButton type="submit" disabled={isLoading}>
           Register now
@@ -231,6 +251,11 @@ function Signup() {
             I agree to the <span>Terms and Conditions</span>
           </label>
         </CheckedInputWrapper>
+        {errors.find((error) => error.path === "checked") && (
+          <ErrorMessage>
+            {errors.find((error) => error.path === "checked").message}
+          </ErrorMessage>
+        )}
         <Line>
           <div></div>
         </Line>

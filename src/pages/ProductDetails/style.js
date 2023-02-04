@@ -14,6 +14,12 @@ export const Information = styled.div`
   border: 1px solid #e3e8ee;
   border-radius: 6px;
   gap: 50px;
+  @media only screen and (max-width: 768px) {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+    padding: 20px;
+  }
 `;
 
 export const Clothings = styled.div`
@@ -27,13 +33,21 @@ export const Clothings = styled.div`
 export const Clothing = styled.div`
   width: 350px;
   height: 350px;
+  text-align: center;
 `;
 
 export const SmallClothing = styled.div`
   display: flex;
   gap: 10px;
+  width: 350px;
+  text-align: center;
+  cursor: pointer;
+  img:hover {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
 `;
-
 export const Statistic = styled.div`
   display: flex;
   gap: 60px;
@@ -292,6 +306,9 @@ export const Save = styled.div`
 export const Descriptions = styled.div`
   display: flex;
   gap: 30px;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const DescriptionProd = styled.div`
   margin: 20px 0 0 85px;
@@ -428,7 +445,6 @@ export const Related = styled.div`
 
     letter-spacing: -0.2px;
     color: ${(props) => props.theme.pallet.main};
-
   }
 `;
 

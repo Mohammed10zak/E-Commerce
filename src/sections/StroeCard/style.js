@@ -14,8 +14,6 @@ export const Cardstrore = styled.div`
   justify-content: left;
   align-content: center;
   background-color: ${(props) => props.theme.pallet.cart};
-
-
 `;
 
 export const ImgCarddiv = styled.div`
@@ -25,20 +23,22 @@ export const ImgCarddiv = styled.div`
 
 export const ImgCard = styled.img`
   margin-top: 10px;
+  @media only screen and (max-width: 768px) {
+    width: 150px;
+  }
 `;
 
 export const AboutList = styled.div`
-display: flex;
-flex-direction: column;
-gap:20px;
-margin-top: 10px;;
-`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 10px; ;
+`;
 export const TitleCard = styled.p`
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
   color: ${(props) => props.theme.pallet.main};
-
 `;
 
 export const PriceCard = styled.h4`
@@ -48,12 +48,11 @@ export const PriceCard = styled.h4`
 
   letter-spacing: -0.2px;
 
-     color: ${(props) => props.theme.pallet.main};
-
+  color: ${(props) => props.theme.pallet.main};
 `;
 
 export const InfoCard = styled.div`
-margin-bottom: -10px;
+  margin-bottom: -10px;
   display: flex;
   gap: 20px;
 `;
@@ -71,7 +70,6 @@ export const Orders = styled.span`
   line-height: 19px;
 
   color: ${(props) => props.theme.pallet.grey};
-
 `;
 
 export const Rating = styled.span`
@@ -80,6 +78,9 @@ export const Rating = styled.span`
   line-height: 19px;
 
   color: #ff9017;
+  img {
+    vertical-align: sub;
+  }
 `;
 export const CardDesc = styled.p`
   width: 500px;
@@ -89,7 +90,9 @@ export const CardDesc = styled.p`
   letter-spacing: -0.2px;
 
   color: ${(props) => props.theme.pallet.grey};
-
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const StyledLink = styled(Link)`

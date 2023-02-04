@@ -12,6 +12,7 @@ import imgcard5 from "../../Images/imgstore5.png";
 
 import { Mainstore, Store, StoreCards } from "./style";
 import { Subscribe } from "../../components/Subscribe";
+import { ShowPages } from "../../components/ShowPages";
 
 function TechStoreList() {
   return (
@@ -60,6 +61,7 @@ function TechStoreList() {
           tempor incididunt ut labore et dolore magna aliqua"
             />
           </StoreCards>
+            <ShowPages />
         </div>
       </Mainstore>
       <Subscribe />

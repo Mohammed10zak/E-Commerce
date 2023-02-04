@@ -18,6 +18,7 @@ import { Subscribe } from "../../components/Subscribe";
 import { Footer } from "../../components/Footer";
 import { AllKinds, ElectronicCards, Fillters } from "./style";
 import { StyledLink } from "../Signin/style";
+import Pagination, { ShowPages } from "../../components/ShowPages";
 
 function Electronic() {
   return (
@@ -29,6 +30,7 @@ function Electronic() {
           <Verify />
 
           <AllKinds>
+
             <Fillters>
               <span>Samsung</span>
               <img src={x} alt={"x"} />
@@ -108,8 +110,11 @@ function Electronic() {
                 ElectronicTitleCard="Canon Cmera EOS 2000, Black 10x zoom"
               />
             </div>
+            
           </ElectronicCards>
+        <ShowPages />
         </div>
+
       </Mainstore>
       <Subscribe />
       <Footer />

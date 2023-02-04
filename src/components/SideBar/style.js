@@ -20,6 +20,9 @@ export const Sidebar = styled.div`
     font-size: 19px;
     margin-left: 10px;
   }
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Accordion = styled.div`
@@ -47,27 +50,29 @@ export const Brands = styled.div`
   border-bottom: 1px solid #779;
   font-size: 19px;
 
-
+  height: 250px;
 `;
 
 export const Features = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   border-bottom: 1px solid #779;
-
+  height: 250px;
 `;
 
 export const Pricerange = styled.div`
   width: 200px;
   padding-top: 20px;
+  border-bottom: 1px solid #779;
+  height: 220px;
 
   p {
     font-size: 16px;
     line-height: 19px;
     font-family: "Arial";
 
-    color: #1c1c1c;
+    color: ${(props) => props.theme.pallet.main};
   }
   button {
     width: 180px;
@@ -99,7 +104,6 @@ export const Labels = styled.div`
   font-size: 16px;
   line-height: 19px;
   color: ${(props) => props.theme.pallet.main};
-
 `;
 
 export const Inputs = styled.div`
@@ -116,14 +120,17 @@ export const Inputs = styled.div`
 export const Condition = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   border-bottom: 1px solid #779;
-
+  height: 220px;
 `;
 
 export const Ratings = styled.div`
+  margin-bottom: 20px;
+  input {
+    margin-right: 10px;
+  }
   display: flex;
   flex-direction: column;
-  gap: 10px;
- 
+  gap: 20px;
 `;

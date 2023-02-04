@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 
 import { FormFooter } from "../../components/FormFooter";
-
-
+import passwordshow from "../../Images/eye.png";
 
 import {
   CheckedInputWrapper,
@@ -43,7 +42,10 @@ function Signin() {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [myData, setMyData] = useState(initialData);
-
+  const handlePasswordShow = (e) => {
+    e.preventDefault();
+    setPasswordType(passwordType === "password" ? "text" : "password");
+  };
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -55,10 +57,7 @@ function Signin() {
       .min(8, "Password must be at least 8 characters long")
       .matches(regularExpression, "Invalid Password")
       .required("Password is required"),
-    checked: yup
-      .boolean()
-      .oneOf([true], "You must agree to the terms and conditions")
-      .required(),
+    checked: yup.boolean().oneOf([true], "check to remember").required(),
   });
 
   const handleChangeInput = (e) => {
@@ -79,20 +78,15 @@ function Signin() {
 
       setIsLoading(true);
       setErrors([]);
-      await schema.validate(formData, { abortEarly: false });
+      await schema.validate(formData, { abortEarly: false }, { myData });
       setMyData({
-        myData: {
-          name: username,
-          password: password,
-          checked: checked,
-        },
+        name: username,
+        password: password,
+        checked: checked,
       });
-    } catch (error) {
-      if (error.errors) {
-        setErrors({ errors: error.errors });
-      } else {
-        setErrors({ errors: [error.message] });
-      }
+    } catch (err) {
+      setIsLoading(false);
+      setErrors(err.inner);
     }
 
     setIsLoading(false);
@@ -103,11 +97,6 @@ function Signin() {
       <StyledForm onSubmit={handleSubmit}>
         <Register>Sign in</Register>
 
-        <ErrorMessage>
-          {Object.values(errors).map((error, index) => (
-            <div key={index}>{error}</div>
-          ))}
-        </ErrorMessage>
         <p>{isLoading}</p>
 
         <InputWrapper>
@@ -116,9 +105,14 @@ function Signin() {
             type="text"
             id="username"
             onChange={handleChangeInput}
-            value={myData.username}
+            value={username}
             placeholder="Email or phone"
           />
+          {errors.find((error) => error.path === "username") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "username").message}
+            </ErrorMessage>
+          )}
         </InputWrapper>
 
         <InputWrapper>
@@ -127,16 +121,20 @@ function Signin() {
             type={passwordType}
             id="password"
             onChange={handleChangeInput}
-            value={myData.password}
+            value={password}
             placeholder="Type Here"
           />
+          {errors.find((error) => error.path === "password") && (
+            <ErrorMessage>
+              {errors.find((error) => error.path === "password").message}
+            </ErrorMessage>
+          )}
           <ShowPassword
-            onClick={() =>
-              setPasswordType(passwordType === "password" ? "text" : "password")
-            }
-          >
-            Show Password
-          </ShowPassword>
+            src={passwordshow}
+            alt="passwordshow"
+            className="passwordshow"
+            onClick={handlePasswordShow}
+          />
         </InputWrapper>
         <CheckedInputWrapper>
           <input
@@ -147,9 +145,14 @@ function Signin() {
           />
           <label htmlFor="checked">Remember me</label>
         </CheckedInputWrapper>
+        {errors.find((error) => error.path === "checked") && (
+          <ErrorMessage>
+            {errors.find((error) => error.path === "checked").message}
+          </ErrorMessage>
+        )}
 
         <SubmitButton type="submit" disabled={isLoading}>
-          <StyledLinkhome to="/alibaba">Log In</StyledLinkhome>
+          <StyledLinkhome>Log In</StyledLinkhome>
         </SubmitButton>
         <StyledOR>
           <div></div> <span>OR</span> <div></div>

@@ -6,10 +6,9 @@ export const ImgTheme = styled.button`
   background: none;
 
   img {
-    border-radius: 20px;
-    border: 1px solid ${(props) => props.theme.pallet.main};
-    width: 40px;
-    height: 40px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     background-color: ${(props) => props.theme.pallet.grey};
   }
 `;

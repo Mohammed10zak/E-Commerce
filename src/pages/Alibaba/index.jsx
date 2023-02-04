@@ -1,5 +1,17 @@
 import React from "react";
 
+import { Offers } from "../../sections/Offer/index";
+import { Dealsandoffer } from "../../sections/Dealsandoffer/index";
+import { Recommendeditem } from "../../sections/Recommendeditem/index";
+import { Source } from "../../sections/Sources/index";
+import { Service } from "../../sections/Service/index";
+import { Supplier } from "../../sections/Supplier/index";
+import { Subscribe } from "../../components/Subscribe/index";
+import { Footer } from "../../components/Footer/index";
+import { Request } from "../../sections/Request/index";
+import { Header } from "./../../components/Header/index";
+import { Product } from "../../sections/Product";
+
 import bgmain from "../../Images/bgmain.svg";
 import Avatar from "../../Images/Avatar.svg";
 import monitorIcon from "../../Images/monitorIcon.svg";
@@ -16,7 +28,6 @@ import home from "../../Images/home1.png";
 import chair from "../../Images/chair.png";
 import chair1 from "../../Images/chair1.png";
 import chair2 from "../../Images/chair2.png";
-
 import gra from "../../Images/gra.png";
 import blinder from "../../Images/blinder.png";
 import mixer from "../../Images/mixer.png";
@@ -37,7 +48,6 @@ import fly from "../../Images/fly.png";
 import industry from "../../Images/industry.png";
 import product from "../../Images/product.png";
 import product2 from "../../Images/product2.png";
-
 import ae from "../../Images/ae.png";
 import aus from "../../Images/aus.png";
 import us from "../../Images/us.png";
@@ -49,7 +59,6 @@ import fr from "../../Images/fr.png";
 import gb from "../../Images/gb.png";
 
 import {
-  
   Mainul,
   BGCard,
   Loguser,
@@ -70,17 +79,6 @@ import {
   Suppliers,
   AllSuppliers,
 } from "./style";
-import { Offers } from "../../sections/Offer/index";
-import { Dealsandoffer } from "../../sections/Dealsandoffer/index";
-import { Source } from "../../sections/Sources/Source";
-import { Product } from "../../sections/Product";
-import { Recommendeditem } from "../../sections/Recommendeditem/index";
-import { Service } from "../../sections/Service/index";
-import { Supplier } from "../../sections/Supplier/index";
-import { Subscribe } from "../../components/Subscribe/index";
-import { Footer } from "../../components/Footer/index";
-import { Request } from "../../sections/Request/index";
-import { Header } from "./../../components/Header/index";
 
 function Alibaba() {
   return (

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
-
 gap: 10px;
 display: flex;
 flex-direction: column;
@@ -13,6 +12,10 @@ border-radius: 6px;
 padding: 20px;
 background: ${(props) => props.theme.pallet.cart};
 
+@media (max-width: 600px) {
+  width: 90%;
+  margin: 40px auto;
+}
 `;
 
 export const Register = styled.h3`
@@ -38,9 +41,15 @@ export const InputFullName = styled.div`
     border-radius: 6px;
     outline: none;
   }
+  @media (max-width: 600px) {
+  input {
+    width: 72%;
+  }
+}
 `;
 
 export const InputWrapper = styled.div`
+position: relative;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -61,6 +70,12 @@ export const InputWrapper = styled.div`
     font-size: 14px;
     outline: none;
   }
+
+  @media (max-width: 600px) {
+  input {
+    width: 87%;
+  }
+}
 `;
 
 export const CheckedInputWrapper = styled.div`
@@ -107,6 +122,8 @@ export const PhoneInputWrapper = styled.div`
     border: 1px solid #ccc;
     font-size: 14px;
     outline: none;
+  border-radius: 6px;
+border-left: none;
   }
 
   select {
@@ -117,6 +134,11 @@ export const PhoneInputWrapper = styled.div`
     width: 121px;
     display: inline;
   }
+  @media (max-width: 600px) {
+  input {
+    width: 53%;
+  }
+}
 `;
 
 
@@ -137,6 +159,12 @@ export const SubmitButton = styled.button`
     background-color: grey;
     cursor: not-allowed;
   }
+
+  @media (max-width: 600px) {
+  input {
+    width: 10%;
+  }
+}
 `;
 
 export const Line = styled.div`
@@ -151,10 +179,10 @@ export const Line = styled.div`
   border-radius: 6px;
 `;
 
-export const ErrorMessage = styled.div`
-  display: block;
+export const ErrorMessage = styled.span`
+margin-top: 10px;
   color: red;
   font-size: 16px;
   font-family: "Arial";
-  width: 290px;
+  width: 200px;
 `;

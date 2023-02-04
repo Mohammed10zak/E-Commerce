@@ -1,5 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+
 import { Header } from "../../components/Header";
+import { RelatedProducts } from "../../sections/RelatedProducts";
+import { Discount } from "../../components/Discount/index";
+import { Footer } from "../../components/Footer";
+import { MayProduct } from "../../sections/MayProduct/index";
 
 import clothing from "../../Images/clothing.png";
 import clothing1 from "../../Images/clothing1.png";
@@ -27,6 +32,8 @@ import related3 from "../../Images/related3.png";
 import related4 from "../../Images/related4.png";
 import related5 from "../../Images/related5.png";
 import related6 from "../../Images/related6.png";
+import fillstar from "../../Images/fillstar.png";
+import star from "../../Images/star.png";
 
 import {
   Additional,
@@ -68,27 +75,30 @@ import {
   SupplierInfo,
   SupplierProfile,
 } from "./style";
-import { RelatedProducts } from "../../sections/RelatedProducts";
-import { Discount } from "../../components/Discount/index";
-import { Footer } from "../../components/Footer";
 import { Rating } from "../../sections/StroeCard/style";
-import { MayProduct } from "../../sections/MayProduct/index";
+
 function ProductDetails() {
+  const [clothingSrc, setClothingSrc] = useState(clothing);
+
+  const handleClick = (e) => {
+    setClothingSrc(e.target.src);
+  };
+
   return (
     <ProdDetails>
       <Header />
       <Information>
         <Clothings>
           <Clothing>
-            <img src={clothing} alt="clothing" />
+            <img src={clothingSrc} alt="clothing" />
           </Clothing>
           <SmallClothing>
-            <img src={clothing1} alt="clothing" />
-            <img src={clothing2} alt="clothing" />
-            <img src={clothing3} alt="clothing" />
-            <img src={clothing4} alt="clothing" />
-            <img src={clothing5} alt="clothing" />
-            <img src={clothing6} alt="clothing" />
+            <img src={clothing1} alt="clothing" onClick={handleClick} />
+            <img src={clothing2} alt="clothing" onClick={handleClick} />
+            <img src={clothing3} alt="clothing" onClick={handleClick} />
+            <img src={clothing4} alt="clothing" onClick={handleClick} />
+            <img src={clothing5} alt="clothing" onClick={handleClick} />
+            <img src={clothing6} alt="clothing" onClick={handleClick} />
           </SmallClothing>
         </Clothings>
 
@@ -101,7 +111,15 @@ function ProductDetails() {
             Mens Long Sleeve T-shirt Cotton Base Layer Slim Muscle
           </ClothisTitle>
           <Statistic>
-            <Rating>Rating: 9.3</Rating>
+            <Rating>
+              {" "}
+              <img src={fillstar} alt="rating" id="rating2" />
+              <img src={fillstar} alt="rating" />
+              <img src={fillstar} alt="rating" />
+              <img src={fillstar} alt="rating" />
+              <img src={star} alt="rating" />
+              <span>9.3</span>
+            </Rating>
             <span>
               <img src={msg} alt="msg" />
               32 reviews
@@ -298,32 +316,32 @@ function ProductDetails() {
           <RelatedProducts
             img={related1}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
           <RelatedProducts
             img={related2}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
           <RelatedProducts
             img={related3}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
           <RelatedProducts
             img={related4}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
           <RelatedProducts
             img={related5}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
           <RelatedProducts
             img={related6}
             title="Xiaomi Redmi 8 Original "
-            price="$32.00-$40.00"
+            price="$32.00 - $40.00"
           />
         </AllRelated>
       </Related>

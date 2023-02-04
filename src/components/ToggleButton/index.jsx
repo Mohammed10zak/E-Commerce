@@ -22,8 +22,8 @@ const ToggleButton = () => {
       >
         {theme.theme === "light" ? (
           <img src={light} alt="light" />
-          ) : (
-            <img src={dark} alt="dark" />
+        ) : (
+          <img src={dark} alt="dark" />
         )}
       </ImgTheme>
     </div>

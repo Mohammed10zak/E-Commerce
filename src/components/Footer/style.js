@@ -5,7 +5,7 @@ export const Foot1 = styled.div`
   justify-content: space-around;
   padding: 20px;
   background: ${(props) => props.theme.pallet.secondary};
-  border-bottom:2px solid #E3E8EE ;
+  border-bottom: 2px solid #789;
   p {
     width: 276px;
     height: 48px;
@@ -47,6 +47,9 @@ export const Foot1 = styled.div`
     padding: 10px;
     margin-top: 10px;
   }
+  @media only screen and (max-width: 768px) {
+      display:none;
+    }
 `;
 
 export const Icon = styled.img`
@@ -62,7 +65,7 @@ export const Icons = styled.div`
 export const Foot2 = styled.div`
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 20px;
   gap: 900px;
   background: ${(props) => props.theme.pallet.page};
 
@@ -73,15 +76,11 @@ export const Foot2 = styled.div`
     line-height: 24px;
 
     letter-spacing: -0.2px;
-    margin-top: 10px;
+    margin-top: 5px;
 
     color: ${(props) => props.theme.pallet.grey};
-
   }
 
-  div {
-    padding: 10px;
-  }
   div img {
     width: 28px;
     height: 20px;
@@ -95,6 +94,5 @@ export const Foot2 = styled.div`
     border: none;
     padding: 10px;
     color: ${(props) => props.theme.pallet.main};
-
   }
 `;

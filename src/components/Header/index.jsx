@@ -8,12 +8,12 @@ import heart from "../../Images/heart.svg";
 import category from "../../Images/category.svg";
 import almany from "../../Images/almany.svg";
 import { Setting, Settings } from "./../style";
-import { StyledNav1, Search, StyledNav2, UL, Lang } from "./style";
+import { StyledNav1, Search, StyledNav2, UL, Lang,  StyledHeader } from "./style";
 import ToggleButton from "../ToggleButton";
 import { NavLink } from "react-router-dom";
 export const Header = () => {
   return (
-    <header>
+    <StyledHeader>
       <StyledNav1>
         <img src={logo} alt="logo" />
 
@@ -30,11 +30,16 @@ export const Header = () => {
             <p>Profile</p>
           </Setting>
           <Setting>
+            <NavLink to="/productdetails">
             <img src={msg} alt={"msg"} />
+            </NavLink>
+              
             <p>Message</p>
           </Setting>
           <Setting>
-            <img src={heart} alt={"heart"} />
+            <NavLink to="/electronic">
+              <img src={heart} alt={"heart"} />
+            </NavLink>
             <p>Orders</p>
           </Setting>
           <Setting>
@@ -76,6 +81,6 @@ export const Header = () => {
           <img src={almany} alt="almany" />
         </Lang>
       </StyledNav2>
-    </header>
+    </StyledHeader>
   );
 };

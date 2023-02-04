@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+
 import {
   Sidebar,
   Accordion,
@@ -12,7 +14,9 @@ import {
   StyledAccordionContent,
   StyledAccordionTitle,
 } from "./style";
-import { useState } from "react";
+
+import fillstar from "../../Images/fillstar.png";
+import star from "../../Images/star.png";
 
 export const SideBar = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -142,20 +146,36 @@ export const SideBar = () => {
       <Ratings>
         <p>Ratings</p>
         <div>
-          <input type="radio" id="Any" />
-          <label htmlFor="Any">Refurbished</label>
+          <input type="checkbox" id="rating1" />
+          <img src={fillstar} alt="rating" id="rating1" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
         </div>
         <div>
-          <input type="radio" id="Refurbished" />
-          <label htmlFor="Refurbished">Refurbished</label>
+          <input type="checkbox" id="rating2" />
+          <img src={fillstar} alt="rating" id="rating2" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
+          <img src={star} alt="rating" />
         </div>
         <div>
-          <input type="radio" id="new" />
-          <label htmlFor="new">Brand new</label>
+          <input type="checkbox" id="rating3" />
+          <img src={fillstar} alt="rating" id="rating3" />
+          <img src={fillstar} alt="rating" />
+          <img src={fillstar} alt="rating" />
+          <img src={star} alt="rating" />
+          <img src={star} alt="rating" />
         </div>
         <div>
-          <input type="radio" id="items" />
-          <label htmlFor="items">Old items</label>
+          <input type="checkbox" id="rating4" />
+          <img src={fillstar} alt="rating" id="rating4" />
+          <img src={fillstar} alt="rating" />
+          <img src={star} alt="rating" />
+          <img src={star} alt="rating" />
+          <img src={star} alt="rating" />
         </div>
       </Ratings>
     </Sidebar>
