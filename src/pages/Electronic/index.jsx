@@ -18,6 +18,7 @@ import { Subscribe } from "../../components/Subscribe";
 import { Footer } from "../../components/Footer";
 import { AllKinds, ElectronicCards, Fillters } from "./style";
 import { StyledLink } from "../Signin/style";
+import { ShowPages } from "../../components/ShowPages";
 
 function Electronic() {
   return (
