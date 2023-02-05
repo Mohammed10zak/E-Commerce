@@ -6,8 +6,7 @@ import { Discount } from "../../components/Discount/index";
 import { Footer } from "../../components/Footer";
 import { MayProduct } from "../../sections/MayProduct/index";
 
-import clothing from "../../Images/clothing.png";
-import clothing1 from "../../Images/clothing1.png";
+import clothing1 from "../../Images/clothing.png";
 import clothing2 from "../../Images/clothing2.png";
 import clothing3 from "../../Images/clothing3.png";
 import clothing4 from "../../Images/clothing4.png";
@@ -78,7 +77,7 @@ import {
 import { Rating } from "../../sections/StroeCard/style";
 
 function ProductDetails() {
-  const [clothingSrc, setClothingSrc] = useState(clothing);
+  const [clothingSrc, setClothingSrc] = useState(clothing1);
 
   const handleClick = (e) => {
     setClothingSrc(e.target.src);

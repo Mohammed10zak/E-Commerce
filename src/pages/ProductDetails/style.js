@@ -34,6 +34,11 @@ export const Clothing = styled.div`
   width: 350px;
   height: 350px;
   text-align: center;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const SmallClothing = styled.div`
@@ -42,6 +47,9 @@ export const SmallClothing = styled.div`
   width: 350px;
   text-align: center;
   cursor: pointer;
+  & img {
+    max-width: 50px;
+  }
   img:hover {
     width: 50px;
     height: 50px;
