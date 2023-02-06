@@ -1,6 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 import * as yup from "yup";
 import { FormFooter } from "../../components/FormFooter";
+import { API_URL } from "../../config/api";
+import { useAuthContext } from "../../context/AuthContext";
+
 import { AlredyAccount, StyledLink } from "../Signin/style";
 import {
   CheckedInputWrapper,
@@ -14,15 +18,6 @@ import {
   SubmitButton,
 } from "./style";
 
-const initialData = {
-  name: "mhmd",
-  surname: "zakh",
-  email: "mhmd@gsg.com",
-  phone: "05987654",
-  password: "mhmd123",
-  selectedOption: "UN +967",
-};
-
 const regularExpression =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
@@ -30,6 +25,16 @@ const phoneRegExp =
   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 function Signup() {
+  const {
+    setAuthorized,
+    loading,
+    setLoading,
+    errors,
+    setErrors,
+    setToken,
+    setUsername,
+  } = useAuthContext();
+
   const [name, setName] = useState("");
   const [surname, setSurName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,9 +43,6 @@ function Signup() {
   const [confirmpass, setConfirmpass] = useState("");
   const [checked, setChecked] = useState(false);
   const [selectedOption, setSelectedOption] = useState("UZ +998");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [myData, setMyData] = useState(initialData);
 
   const schema = yup.object().shape({
     name: yup
@@ -86,49 +88,49 @@ function Signup() {
     if (id === "phoneA") setSelectedOption(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const formData = {
-        name,
-        surname,
-        email,
-        phone,
-        password,
-        confirmpass,
-        checked,
-        selectedOption,
-      };
-      setIsLoading(true);
-      setErrors([]);
-      await schema.validate(formData, { abortEarly: false }, { myData });
-      setMyData({
-        myData: {
+    schema
+      .validate(
+        {
+          name,
+          email,
+          password,
+          surname,
+          phone,
+          confirmpass,
+          checked,
+          selectedOption,
+        },
+        { abortEarly: false }
+      )
+      .then(async () => {
+        const res = await axios.post(`${API_URL}/users/signup`, {
           name: name,
-          surname: surname,
-
           email: email,
           password: password,
-          confirmpass: confirmpass,
-          checked: checked,
-          selectedOption: selectedOption,
-          phone: phone,
-        },
+        });
+        if (res) {
+          setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          setUsername(res.data.name);
+          localStorage.setItem("name", res.data.name);
+          setErrors([]);
+          setLoading(false);
+          setAuthorized(true);
+        }
+      })
+      .catch((e) => {
+        setErrors(e.errors || [e.message]);
+        setLoading(true);
       });
-    } catch (err) {
-      setIsLoading(false);
-      setErrors(err.inner);
-    }
-
-    setIsLoading(false);
   };
-
   return (
     <div>
       <StyledForm onSubmit={handleSubmit}>
         <Register>Register</Register>
 
-        <p>{isLoading}</p>
+        <p>{loading?"loading...":""}</p>
         <InputFullName>
           <div>
             <label htmlFor="name">Name</label>
@@ -139,11 +141,11 @@ function Signup() {
               value={name}
               placeholder="Type here"
             />
-            {errors.find((error) => error.path === "name") && (
-              <ErrorMessage>
-                {errors.find((error) => error.path === "name").message}
-              </ErrorMessage>
-            )}
+            <p>
+              {errors.map((error, index) => {
+                return <ErrorMessage key={index}>{error}</ErrorMessage>;
+              })}
+            </p>
           </div>
 
           <div>
@@ -155,11 +157,6 @@ function Signup() {
               value={surname}
               placeholder="Type here"
             />
-            {errors.find((error) => error.path === "surname") && (
-              <ErrorMessage>
-                {errors.find((error) => error.path === "surname").message}
-              </ErrorMessage>
-            )}
           </div>
         </InputFullName>
 
@@ -172,11 +169,6 @@ function Signup() {
             value={email}
             placeholder="example@mail.com"
           />
-          {errors.find((error) => error.path === "email") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "email").message}
-            </ErrorMessage>
-          )}
         </InputWrapper>
         <PhoneInputWrapper>
           <label htmlFor="phone">Phone</label>
@@ -198,11 +190,6 @@ function Signup() {
             value={phone}
             placeholder="00-000-00-00"
           />
-          {errors.find((error) => error.path === "phone") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "phone").message}
-            </ErrorMessage>
-          )}
         </PhoneInputWrapper>
 
         <InputWrapper>
@@ -214,12 +201,6 @@ function Signup() {
             value={password}
             placeholder="At least 6 characters."
           />
-
-          {errors.find((error) => error.path === "password") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "password").message}
-            </ErrorMessage>
-          )}
         </InputWrapper>
 
         <InputWrapper>
@@ -231,15 +212,12 @@ function Signup() {
             value={confirmpass}
             placeholder="Type here"
           />
-          {errors.find((error) => error.path === "confirmpass") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "confirmpass").message}
-            </ErrorMessage>
-          )}
         </InputWrapper>
-        <SubmitButton type="submit" disabled={isLoading}>
+
+        <SubmitButton type="submit" disabled={loading}>
           Register now
         </SubmitButton>
+
         <CheckedInputWrapper>
           <input
             type="checkbox"
@@ -251,11 +229,7 @@ function Signup() {
             I agree to the <span>Terms and Conditions</span>
           </label>
         </CheckedInputWrapper>
-        {errors.find((error) => error.path === "checked") && (
-          <ErrorMessage>
-            {errors.find((error) => error.path === "checked").message}
-          </ErrorMessage>
-        )}
+
         <Line>
           <div></div>
         </Line>

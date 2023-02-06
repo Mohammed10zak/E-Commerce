@@ -11,9 +11,14 @@ import { Setting, Settings } from "./../style";
 import { StyledNav1, Search, StyledNav2, UL, Lang,  StyledHeader } from "./style";
 import ToggleButton from "../ToggleButton";
 import { NavLink } from "react-router-dom";
+import LogOut from "../LogOut";
 export const Header = () => {
+
+
+
   return (
     <StyledHeader>
+
       <StyledNav1>
         <img src={logo} alt="logo" />
 
@@ -50,6 +55,11 @@ export const Header = () => {
           </Setting>
           <Setting>
             <ToggleButton />
+            <p>theme</p>
+
+          </Setting>
+          <Setting>
+            <LogOut />
           </Setting>
         </Settings>
       </StyledNav1>

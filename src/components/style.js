@@ -29,7 +29,7 @@ export const Setting = styled.div`
   }
 `;
 export const StyledNav = styled.div`
-  margin-top: 0; 
+  margin-top: 0;
 `;
 
 export const PaginationContainer = styled.div`
@@ -76,3 +76,21 @@ export const PaginationNumber = styled.span`
   border: 1px solid #e3e8ee;
 `;
 
+export const LogoutBtn = styled.button`
+  font-size: 14px;
+  color: ${(props) => props.theme.pallet.secondary};
+  background-color: #898678;
+
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  margin-top: -5px;
+  cursor: pointer;
+`;
+
+export const LogoutImg = styled.img`
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 5px;
+`;
