@@ -1,40 +1,76 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-
-
+import React, { lazy, Suspense, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { themeContext } from "./context/themeContext";
 import { lightTheme } from "./global/theme";
 import { GlobalStyle } from "./global/style";
-import { Home } from "./pages/Home";
-import Signin from './pages/Signin/index';
-import Signup from './pages/Signup/index';
-import Alibaba from "./pages/Alibaba";
-import TechStoreList from './pages/TechStorelist/index';
-import Electronic from './pages/Electronic/index';
-import ProductDetails from './pages/ProductDetails/index';
-import Cart from "./pages/BasicCart";
+import { useAuthContext } from "./context/AuthContext";
+
+const Signin = lazy(() => import("./pages/Signin/index"));
+const Signup = lazy(() => import("./pages/Signup/index"));
+const Alibaba = lazy(() => import("./pages/Alibaba"));
+const TechStoreList = lazy(() => import("./pages/TechStorelist/index"));
+const Electronic = lazy(() => import("./pages/Electronic/index"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails/index"));
+const Cart = lazy(() => import("./pages/BasicCart"));
 
 function App() {
   const [theme, setTheme] = useState(
     JSON.parse(localStorage.getItem("theme")) || lightTheme
   );
 
+  const { authorized, setAuthorized, setToken } = useAuthContext();
+
+  const token = localStorage.getItem("token");
+  if (token) {
+    setToken(token);
+    setAuthorized(true);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <themeContext.Provider value={[theme, setTheme]}>
         <div className="App">
           <GlobalStyle />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/signin" element={<Signin />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/alibaba" element={<Alibaba />} />
-            <Route path="/techstorelist" element={<TechStoreList />} />
-            <Route path="/electronic" element={<Electronic />} />
-            <Route path="/productdetails" element={<ProductDetails />} />
-            <Route path="/cartpage" element={<Cart />} />
-          </Routes>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route index element={<Navigate to="/signin" />} />
+              <Route
+                path="/signin"
+                element={authorized ? <Navigate to="/alibaba" /> : <Signin />}
+              />
+              <Route
+                path="/signup"
+                element={authorized ? <Navigate to="/alibaba" /> : <Signup />}
+              />
+              <Route
+                path="/alibaba"
+                element={authorized ? <Alibaba /> : <Navigate to="/signin" />}
+              />
+              <Route
+                path="/techstorelist"
+                element={
+                  authorized ? <TechStoreList /> : <Navigate to="/signin" />
+                }
+              />
+              <Route
+                path="/electronic"
+                element={
+                  authorized ? <Electronic /> : <Navigate to="/electronic" />
+                }
+              />
+              <Route
+                path="/productdetails"
+                element={
+                  authorized ? <ProductDetails /> : <Navigate to="/signin" />
+                }
+              />
+              <Route
+                path="/cartpage"
+                element={authorized ? <Cart /> : <Navigate to="/signin" />}
+              />
+            </Routes>
+          </Suspense>
         </div>
       </themeContext.Provider>
     </ThemeProvider>

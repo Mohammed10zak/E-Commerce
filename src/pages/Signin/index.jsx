@@ -25,29 +25,35 @@ import {
 
 import google from "../../Images/google.svg";
 import facebook from "../../Images/facebook.svg";
-
-const initialData = {
-  username: "mhmdkhzak",
-  password: "mhmd123",
-};
+import { useAuthContext } from "../../context/AuthContext";
+import { API_URL } from "../../config/api";
+import axios from "axios";
 
 const regularExpression =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
 function Signin() {
-  const [username, setUserName] = useState("");
+  const {
+    setAuthorized,
+    loading,
+    setLoading,
+    errors,
+    setErrors,
+    setToken,
+    setUsername,
+  } = useAuthContext();
+
+  const [Username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [myData, setMyData] = useState(initialData);
+
   const handlePasswordShow = (e) => {
     e.preventDefault();
     setPasswordType(passwordType === "password" ? "text" : "password");
   };
   const schema = yup.object().shape({
-    username: yup
+    Username: yup
       .string()
       .min(6, "Name must be at least 6 characters long")
       .max(16, "Name must be no more than 16 characters")
@@ -67,29 +73,37 @@ function Signin() {
     if (id === "checked") setChecked(e.target.checked);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const formData = {
-        username,
-        password,
-        checked,
-      };
-
-      setIsLoading(true);
-      setErrors([]);
-      await schema.validate(formData, { abortEarly: false }, { myData });
-      setMyData({
-        name: username,
-        password: password,
-        checked: checked,
+    setLoading(true);
+    schema
+      .validate(
+        {
+          Username,
+          password,
+          checked,
+        },
+        { abortEarly: false }
+      )
+      .then(async () => {
+        const res = await axios.post(`${API_URL}/users/login`, {
+          email: Username,
+          password: password,
+        });
+        if (res) {
+          setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          setUsername(res.data.name);
+          localStorage.setItem("name", res.data.name);
+          setErrors([]);
+          setLoading(false);
+          setAuthorized(true);
+        }
+      })
+      .catch((e) => {
+        setErrors(e.errors || [e.message]);
+        setLoading(false);
       });
-    } catch (err) {
-      setIsLoading(false);
-      setErrors(err.inner);
-    }
-
-    setIsLoading(false);
   };
 
   return (
@@ -97,7 +111,17 @@ function Signin() {
       <StyledForm onSubmit={handleSubmit}>
         <Register>Sign in</Register>
 
-        <p>{isLoading}</p>
+        <p>{loading}</p>
+        <p>
+            {errors.map((error, index) => {
+              return <ErrorMessage key={index}>{error}</ErrorMessage>;
+            })}
+          </p>
+          {errors.find((error) => error.path === "checked") && (
+          <ErrorMessage>
+            {errors.find((error) => error.path === "checked").message}
+          </ErrorMessage>
+        )}
 
         <InputWrapper>
           <label htmlFor="username">Username</label>
@@ -105,14 +129,10 @@ function Signin() {
             type="text"
             id="username"
             onChange={handleChangeInput}
-            value={username}
+            value={Username}
             placeholder="Email or phone"
           />
-          {errors.find((error) => error.path === "username") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "username").message}
-            </ErrorMessage>
-          )}
+          
         </InputWrapper>
 
         <InputWrapper>
@@ -124,11 +144,7 @@ function Signin() {
             value={password}
             placeholder="Type Here"
           />
-          {errors.find((error) => error.path === "password") && (
-            <ErrorMessage>
-              {errors.find((error) => error.path === "password").message}
-            </ErrorMessage>
-          )}
+
           <ShowPassword
             src={passwordshow}
             alt="passwordshow"
@@ -145,13 +161,8 @@ function Signin() {
           />
           <label htmlFor="checked">Remember me</label>
         </CheckedInputWrapper>
-        {errors.find((error) => error.path === "checked") && (
-          <ErrorMessage>
-            {errors.find((error) => error.path === "checked").message}
-          </ErrorMessage>
-        )}
-
-        <SubmitButton type="submit" disabled={isLoading}>
+   
+        <SubmitButton type="submit" disabled={loading}>
           <StyledLinkhome>Log In</StyledLinkhome>
         </SubmitButton>
         <StyledOR>
