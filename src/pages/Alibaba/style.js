@@ -135,7 +135,7 @@ export const Sales = styled.div`
   width: 220px;
   height: 100px;
 
-  p {
+  & p {
     width: 130px;
     font-size: 16px;
     color: #000;
