@@ -10,22 +10,20 @@ export const Settings = styled.div`
 `;
 
 export const Setting = styled.div`
-  p {
+
+  & p {
     font-family: "Arial";
     font-weight: 400;
     font-size: 12px;
-    line-height: 15px;
-
-    display: flex;
-    align-items: center;
-    text-align: center;
+    line-height: 20px;
 
     color: #8b96a5;
   }
 
-  img {
+  & img {
+    margin-left: 6px;
     width: 20px;
-    height: 19px;
+    height: 20px;
   }
 `;
 export const StyledNav = styled.div`

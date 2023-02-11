@@ -88,49 +88,48 @@ function Signup() {
     if (id === "phoneA") setSelectedOption(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    schema
-      .validate(
-        {
-          name,
-          email,
-          password,
-          surname,
-          phone,
-          confirmpass,
-          checked,
-          selectedOption,
-        },
-        { abortEarly: false }
-      )
-      .then(async () => {
-        const res = await axios.post(`${API_URL}/users/signup`, {
-          name: name,
-          email: email,
-          password: password,
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      schema
+        .validate(
+          {
+            name,
+            email,
+            password,
+            surname,
+            phone,
+            confirmpass,
+            checked,
+            selectedOption,
+          },
+          { abortEarly: false }
+        )
+        .then(async () => {
+          const res = await axios.post(`${API_URL}/users/signup`, {
+            name: name,
+            email: email,
+            password: password,
+          });
+          if (res) {
+            setToken(res.data.token);
+            localStorage.setItem("token", res.data.token);
+            setUsername(res.data.name);
+            localStorage.setItem("name", res.data.name);
+            setErrors([]);
+            setLoading(false);
+            setAuthorized(true);
+          }
+        })
+        .catch((e) => {
+          setErrors(e.errors || [e.message]);
+          setLoading(true);
         });
-        if (res) {
-          setToken(res.data.token);
-          localStorage.setItem("token", res.data.token);
-          setUsername(res.data.name);
-          localStorage.setItem("name", res.data.name);
-          setErrors([]);
-          setLoading(false);
-          setAuthorized(true);
-        }
-      })
-      .catch((e) => {
-        setErrors(e.errors || [e.message]);
-        setLoading(true);
-      });
-  };
+    };
   return (
     <div>
       <StyledForm onSubmit={handleSubmit}>
         <Register>Register</Register>
 
-        <p>{loading?"loading...":""}</p>
         <InputFullName>
           <div>
             <label htmlFor="name">Name</label>
@@ -214,9 +213,10 @@ function Signup() {
           />
         </InputWrapper>
 
-        <SubmitButton type="submit" disabled={loading}>
+        <SubmitButton type="submit" >
           Register now
         </SubmitButton>
+        <p>{loading?"loading...":""}</p>
 
         <CheckedInputWrapper>
           <input

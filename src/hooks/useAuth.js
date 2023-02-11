@@ -13,8 +13,6 @@ const useAuth = (url) => {
     setToken("");
     setUsername("");
     setAuthorized(false);
-
-
   };
 
   return {

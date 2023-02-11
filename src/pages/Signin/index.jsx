@@ -33,17 +33,10 @@ const regularExpression =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
 function Signin() {
-  const {
-    setAuthorized,
-    loading,
-    setLoading,
-    errors,
-    setErrors,
-    setToken,
-    setUsername,
-  } = useAuthContext();
+  const { loading, setLoading, errors, setErrors, setToken, setAuthorized } =
+    useAuthContext();
 
-  const [Username, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checked, setChecked] = useState(false);
   const [passwordType, setPasswordType] = useState("password");
@@ -53,11 +46,11 @@ function Signin() {
     setPasswordType(passwordType === "password" ? "text" : "password");
   };
   const schema = yup.object().shape({
-    Username: yup
+    email: yup
       .string()
-      .min(6, "Name must be at least 6 characters long")
-      .max(16, "Name must be no more than 16 characters")
-      .required("Name is required"),
+      .email("Invalid email")
+      .required("User Name is required"),
+
     password: yup
       .string()
       .min(8, "Password must be at least 8 characters long")
@@ -68,7 +61,7 @@ function Signin() {
 
   const handleChangeInput = (e) => {
     const { value, id } = e.target;
-    if (id === "username") setUserName(value);
+    if (id === "username") setEmail(value);
     if (id === "password") setPassword(value);
     if (id === "checked") setChecked(e.target.checked);
   };
@@ -79,7 +72,7 @@ function Signin() {
     schema
       .validate(
         {
-          Username,
+          email,
           password,
           checked,
         },
@@ -87,14 +80,11 @@ function Signin() {
       )
       .then(async () => {
         const res = await axios.post(`${API_URL}/users/login`, {
-          email: Username,
+          email: email,
           password: password,
         });
         if (res) {
           setToken(res.data.token);
-          localStorage.setItem("token", res.data.token);
-          setUsername(res.data.name);
-          localStorage.setItem("name", res.data.name);
           setErrors([]);
           setLoading(false);
           setAuthorized(true);
@@ -102,7 +92,7 @@ function Signin() {
       })
       .catch((e) => {
         setErrors(e.errors || [e.message]);
-        setLoading(false);
+        setLoading(true);
       });
   };
 
@@ -111,17 +101,11 @@ function Signin() {
       <StyledForm onSubmit={handleSubmit}>
         <Register>Sign in</Register>
 
-        <p>{loading}</p>
         <p>
-            {errors.map((error, index) => {
-              return <ErrorMessage key={index}>{error}</ErrorMessage>;
-            })}
-          </p>
-          {errors.find((error) => error.path === "checked") && (
-          <ErrorMessage>
-            {errors.find((error) => error.path === "checked").message}
-          </ErrorMessage>
-        )}
+          {errors.map((error, index) => {
+            return <ErrorMessage key={index}>{error}</ErrorMessage>;
+          })}
+        </p>
 
         <InputWrapper>
           <label htmlFor="username">Username</label>
@@ -129,10 +113,9 @@ function Signin() {
             type="text"
             id="username"
             onChange={handleChangeInput}
-            value={Username}
+            value={email}
             placeholder="Email or phone"
           />
-          
         </InputWrapper>
 
         <InputWrapper>
@@ -161,10 +144,12 @@ function Signin() {
           />
           <label htmlFor="checked">Remember me</label>
         </CheckedInputWrapper>
-   
-        <SubmitButton type="submit" disabled={loading}>
+
+        <SubmitButton type="submit">
           <StyledLinkhome>Log In</StyledLinkhome>
         </SubmitButton>
+        <p>{loading ? "loading..." : ""}</p>
+
         <StyledOR>
           <div></div> <span>OR</span> <div></div>
         </StyledOR>
