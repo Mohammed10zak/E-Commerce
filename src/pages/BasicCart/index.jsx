@@ -1,5 +1,5 @@
 import React from "react";
-import { Setting, Settings,  StyledImgLogo } from "../../components/style";
+import { Setting, Settings, StyledImgLogo } from "../../components/style";
 import {
   Addcoupon,
   AllCarts,
@@ -50,15 +50,79 @@ import forlater2 from "../../Images/forlater2.png";
 import forlater3 from "../../Images/forlater3.png";
 import forlater4 from "../../Images/forlater4.png";
 import { Footer } from "../../components/Footer";
-import { Discount } from './../../components/Discount';
-import ToggleButton from './../../components/ToggleButton';
+import { Discount } from "./../../components/Discount";
+import ToggleButton from "./../../components/ToggleButton";
 import { SaveBtn } from "../../sections/MyCart/style";
 
-
 function Cart() {
+  const cartData = [
+    {
+      id: 1,
+      img: teshirt,
+      title: "T-shirts with multiple colors, for men and lady",
+      desc: "Size: medium, Color: blue, Material: Plastic, Seller: Artel Market",
+      price: "$78.99",
+      quantity: 9,
+    },
+    {
+      id: 2,
+
+      img: bagg,
+      title: "T-shirts with multiple colors, for men and lady",
+      desc: "Size: medium, Color: blue, Material: Plastic, Seller: Best factory LLC",
+      price: "$39.00",
+      quantity: 3,
+    },
+    {
+      id: 3,
+
+      img: rasm,
+      title: "T-shirts with multiple colors, for men and lady",
+      desc: "Size: medium, Color: blue, Material: Plastic, Seller: Artel Market",
+      price: "$170.50",
+      quantity: 1,
+    },
+  ];
+
+  const paymentMethods = [
+    { id: 1, src: pay1, alt: "pay1" },
+    { id: 2, src: pay2, alt: "pay2" },
+    { id: 3, src: pay3, alt: "pay3" },
+    { id: 4, src: pay4, alt: "pay4" },
+    { id: 5, src: pay5, alt: "pay5" },
+  ];
+  const PaymentMethod = ({ src, alt }) => <img src={src} alt={alt} />;
+
+  const saveForLaterProducts = [
+    {
+      id: 1,
+      img: forlater,
+      price: "$99.50",
+      title: "GoPro HERO6 4K Action Camera - Black",
+    },
+    {
+      id: 2,
+      img: forlater2,
+      price: "$99.50",
+      title: "GoPro HERO6 4K Action Camera - Black",
+    },
+    {
+      id: 3,
+      img: forlater3,
+      price: "$99.50",
+      title: "GoPro HERO6 4K Action Camera - Black",
+    },
+    {
+      id: 4,
+      img: forlater4,
+      price: "$99.50",
+      title: "GoPro HERO6 4K Action Camera - Black",
+    },
+  ];
+
   return (
     <div>
-       <StyledNavCart>
+      <StyledNavCart>
         <StyledImgLogo src={logo} />
         <Settings>
           <Setting>
@@ -80,142 +144,116 @@ function Cart() {
           <ToggleButton />
         </Settings>
       </StyledNavCart>
-    <CartPage>
-     
-
-      <SillCart>
-        <AllCarts>
-          <h3>My cart (3)</h3>
-          <MyCart
-            img={teshirt}
-            title="T-shirts with multiple colors, for men and lady"
-            desc="Size: medium, Color: blue,  Material: Plastic
-        Seller: Artel Market"
-            price="$78.99"
-            quantity="9"
-          />
-
-          <MyCart
-            img={bagg}
-            title="T-shirts with multiple colors, for men and lady"
-            desc="Size: medium, Color: blue,  Material: Plastic
-        Seller: Best factory LLC"
-            price="$39.00"
-            quantity="3"
-          />
-
-          <MyCart
-            img={rasm}
-            title="T-shirts with multiple colors, for men and lady"
-            desc="Size: medium, Color: blue,  Material: Plastic
-        Seller: Artel Market"
-            price="$170.50"
-            quantity="1"
-          />
-          <AllCartsBtns>
-            <BackBtn type="submit">
-              <img src={backbtn} alt="back" />
-              Back to shop
-            </BackBtn>
-
-            <SaveBtn type="submit">Remove all</SaveBtn>
-          </AllCartsBtns>
-        </AllCarts>
-        <TaxandCoupon>
-          <Coupon>
-            <label htmlFor="coupon">Have a coupon?</label>
+      <CartPage>
+        <SillCart>
+          <AllCarts>
+            <h3>My cart (3)</h3>
             <div>
-              <Addcoupon type="text" id="coupon" placeholder="Add coupon" />
-              <ApplyBtn type="submit">Apply</ApplyBtn>
+              {cartData.map((item) => (
+                <MyCart
+                  key={item.id}
+                  img={item.img}
+                  title={item.title}
+                  desc={item.desc}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              ))}
             </div>
-          </Coupon>
+            <AllCartsBtns>
+              <BackBtn type="submit">
+                <img src={backbtn} alt="back" />
+                Back to shop
+              </BackBtn>
 
-          <Total>
-            <Avg>
-              <Subtotal>
-                Subtotal:<span>$1403.97</span>
-              </Subtotal>
-              <Discounts>
-                Discount:<span>- $60.00</span>
-              </Discounts>
-              <Tax>
-                Tax:<span>+ $14.00</span>
-              </Tax>
-            </Avg>
+              <SaveBtn type="submit">Remove all</SaveBtn>
+            </AllCartsBtns>
+          </AllCarts>
+          <TaxandCoupon>
+            <Coupon>
+              <label htmlFor="coupon">Have a coupon?</label>
+              <div>
+                <Addcoupon type="text" id="coupon" placeholder="Add coupon" />
+                <ApplyBtn type="submit">Apply</ApplyBtn>
+              </div>
+            </Coupon>
 
-            <AllTotal>
-              Total:<span>$1357.97</span>
-            </AllTotal>
+            <Total>
+              <Avg>
+                <Subtotal>
+                  Subtotal:<span>$1403.97</span>
+                </Subtotal>
+                <Discounts>
+                  Discount:<span>- $60.00</span>
+                </Discounts>
+                <Tax>
+                  Tax:<span>+ $14.00</span>
+                </Tax>
+              </Avg>
 
-            <CheckoutBtn type="submit">Checkout</CheckoutBtn>
-            <Paymethods>
-              <img src={pay1} alt="pay" />
-              <img src={pay2} alt="pay" />
-              <img src={pay3} alt="pay" />
-              <img src={pay4} alt="pay" />
-              <img src={pay5} alt="pay" />
-            </Paymethods>
-          </Total>
-        </TaxandCoupon>
-      </SillCart>
-      <Inquires>
-        <Inquire>
-          <Inquireimg>
-            <img src={securepay} alt="sequre" />
-          </Inquireimg>
-          <div>
-            <p>Secure payment</p>
-            <span>Have you ever finally just </span>
-          </div>
-        </Inquire>
-        <Inquire>
-          <Inquireimg>
-            <img src={cussupport} alt="sequre" />
-          </Inquireimg>
-          <div>
-            <p>Customer support</p>
-            <span>Have you ever finally just </span>
-          </div>
-        </Inquire>
-        <Inquire>
-          <Inquireimg>
-            <img src={delivery} alt="sequre" />
-          </Inquireimg>
-          <div>
-            <p>Free delivery</p>
-            <span>Have you ever finally just </span>
-          </div>
-        </Inquire>
-      </Inquires>
+              <AllTotal>
+                Total:<span>$1357.97</span>
+              </AllTotal>
 
-      <AllSavingProducts>
-        <h4>Saved for later</h4>
-        <SavingProducts>
-        <SaveforlaterProd
-          img={forlater}
-          price="$99.50"
-          title="GoPro HERO6 4K Action Camera - Black"
-        />
-             <SaveforlaterProd
-          img={forlater2}
-          price="$99.50"
-          title="GoPro HERO6 4K Action Camera - Black"
-        />
-             <SaveforlaterProd
-          img={forlater3}
-          price="$99.50"
-          title="GoPro HERO6 4K Action Camera - Black"
-        />
-             <SaveforlaterProd
-          img={forlater4}
-          price="$99.50"
-          title="GoPro HERO6 4K Action Camera - Black"
-        />
-</SavingProducts>
-      </AllSavingProducts>
-    </CartPage>
+              <CheckoutBtn type="submit">Checkout</CheckoutBtn>
+              <Paymethods>
+                {paymentMethods.map((paymentMethod) => (
+                  <PaymentMethod
+                    key={paymentMethod.id}
+                    src={paymentMethod.src}
+                    alt={paymentMethod.alt}
+                  />
+                ))}
+              </Paymethods>
+            </Total>
+          </TaxandCoupon>
+        </SillCart>
+        <Inquires>
+          <Inquire>
+            <Inquireimg>
+              <img src={securepay} alt="sequre" />
+            </Inquireimg>
+            <div>
+              <p>Secure payment</p>
+              <span>Have you ever finally just </span>
+            </div>
+          </Inquire>
+          <Inquire>
+            <Inquireimg>
+              <img src={cussupport} alt="sequre" />
+            </Inquireimg>
+            <div>
+              <p>Customer support</p>
+              <span>Have you ever finally just </span>
+            </div>
+          </Inquire>
+          <Inquire>
+            <Inquireimg>
+              <img src={delivery} alt="sequre" />
+            </Inquireimg>
+            <div>
+              <p>Free delivery</p>
+              <span>Have you ever finally just </span>
+            </div>
+          </Inquire>
+        </Inquires>
+
+        <AllSavingProducts>
+          <h4>Saved for later</h4>
+          <SavingProducts>
+            {saveForLaterProducts.map((saveForLaterProduct) => (
+              <SaveforlaterProd
+                key={saveForLaterProduct.id}
+                img={saveForLaterProduct.img}
+                price={saveForLaterProduct.price}
+                title={saveForLaterProduct.title}
+              />
+            ))}
+          </SavingProducts>
+        </AllSavingProducts>
+      </CartPage>
       <Discount />
-<Footer />
+      <Footer />
     </div>
   );
 }

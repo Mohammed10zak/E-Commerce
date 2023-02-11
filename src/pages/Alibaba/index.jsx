@@ -82,21 +82,134 @@ import {
 import { NavLink } from "react-router-dom";
 
 function Alibaba() {
+  const itemUL = [
+    { id: 1, name: "Automobiles" },
+    { id: 2, name: "Clothes and wear" },
+    { id: 3, name: "Home interiors" },
+    { id: 4, name: "Computer and tech" },
+    { id: 5, name: "Tools, equipments" },
+    { id: 6, name: "Sports and outdoor" },
+    { id: 7, name: "Animal and pets" },
+    { id: 8, name: "Machinery tools" },
+    { id: 9, name: "More category" },
+  ];
+
+  const offerData = [
+    {
+      img: watch,
+      alt: "watch",
+      title: "Smart watches",
+      discount: "-25%",
+    },
+    {
+      img: laptop,
+      alt: "laptop",
+      title: "Laptops",
+      discount: "-15%",
+    },
+    {
+      img: camera,
+      alt: "camera",
+      title: "GoPro cameras",
+      discount: "-40%",
+    },
+    {
+      img: headphone,
+      alt: "headphone",
+      title: "Headphones",
+      discount: "-25%",
+    },
+    {
+      img: canon,
+      alt: "canon",
+      title: "Canon cameras",
+      discount: "-25%",
+    },
+  ];
+
+  const marketingData = [
+    {
+      sourceImg: home,
+      sourceAlt: "home",
+      sourceTitle: "Home and outdoor",
+      sourceBtn: "Source now",
+      productContainers: [
+        [
+          { title: "Soft chairs", price: "From USD 19", img: chair },
+          { title: "Sofa & chair", price: "From USD 19", img: chair1 },
+          { title: "Kitchen dishes", price: "From USD 19", img: chair2 },
+          { title: "Smart watches", price: "From USD 19", img: gra },
+        ],
+        [
+          { title: "Kitchen mixer", price: "From USD 100", img: mixer },
+          { title: "Blenders", price: "From USD 39", img: blinder },
+          { title: "Home appliance", price: "From USD 19", img: appliance },
+          { title: "Coffee maker", price: "From USD 10", img: tree },
+        ],
+      ],
+    },
+    {
+      sourceImg: source,
+      sourceAlt: "source",
+      sourceTitle: "Consumer electronics and gadgets",
+      sourceBtn: "Source now",
+      productContainers: [
+        [
+          { title: "Smart watches", price: "From USD 19", img: watch },
+          { title: "Cameras", price: "From USD 89", img: camera },
+          { title: "Headphones", price: "From USD 10", img: whiteheadphone },
+          { title: "Smart watches", price: "From USD 90", img: boiler },
+        ],
+        [
+          { title: "Gaming set", price: "From USD 35", img: headphone },
+          { title: "Laptops & PC", price: "From USD 340", img: laptop },
+          { title: "Smartphones", price: "From USD 19", img: Smartphones },
+          {
+            title: "Electric kattle",
+            price: "From USD 240",
+            img: electrecKatra,
+          },
+        ],
+      ],
+    },
+  ];
+
+  const services = [
+    {
+      img: industry,
+      alt: "industry",
+      title: "Source from Industry Hubs",
+      icon: searchIcon,
+    },
+    {
+      img: product,
+      alt: "product",
+      title: "Customize Your Products",
+      icon: prodIcon,
+    },
+    {
+      img: fly,
+      alt: "industry",
+      title: "Fast, reliable shipping by ocean or air",
+      icon: sentIcon,
+    },
+    {
+      img: product2,
+      alt: "product2",
+      title: "Product monitoring and inspection",
+      icon: monitorIcon,
+    },
+  ];
+
   return (
     <div>
       <Header />
 
       <BGCard>
         <Mainul>
-          <li>Automobiles</li>
-          <li>Clothes and wear</li>
-          <li>Home interiors</li>
-          <li>Computer and tech</li>
-          <li>Tools, equipments</li>
-          <li>Sports and outdoor</li>
-          <li>Animal and pets</li>
-          <li>Machinery tools</li>
-          <li>More category</li>
+          {itemUL.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
         </Mainul>
         <div>
           <img src={bgmain} alt="bgmain" />
@@ -130,91 +243,47 @@ function Alibaba() {
       </BGCard>
 
       <Dailyoffers>
-        <Dealsandoffer></Dealsandoffer>
-        <Offers img={watch} alt="watch" title="Smart watches" discount="-25%" />
-        <Offers img={laptop} alt="laptop" title="Laptops" discount="-15%" />
-        <Offers
-          img={camera}
-          alt="camera"
-          title="GoPro cameras"
-          discount="-40%"
-        />
-        <Offers
-          img={headphone}
-          alt="headphone"
-          title="Headphones"
-          discount="-25%"
-        />
-        <Offers
-          img={canon}
-          alt="canon"
-          title="Canon camreras"
-          discount="-25%"
-        />
+        <Dealsandoffer />
+        {offerData.map((offer, index) => (
+          <Offers
+            key={index}
+            img={offer.img}
+            alt={offer.alt}
+            title={offer.title}
+            discount={offer.discount}
+          />
+        ))}
       </Dailyoffers>
 
-      <Marketing>
-        <Source
-          img={home}
-          alt="home"
-          title="Home and outdoor"
-          btn="Source now"
-        />
-        <div>
-          <ProductContainer>
-            <Product title="Soft chairs" price="From USD 19" img={chair} />
-            <Product title="Sofa & chair" price="From USD 19" img={chair1} />
-            <Product title="Kitchen dishes" price="From USD 19" img={chair2} />
-            <Product title="Smart watches" price="From USD 19" img={gra} />
-          </ProductContainer>
-          <ProductContainer>
-            <Product title="Kitchen mixer" price="From USD 100" img={mixer} />
-            <Product title="Blenders" price="From USD 39" img={blinder} />
-            <Product
-              title="Home appliance"
-              price="From USD 19"
-              img={appliance}
-            />
-            <Product title="Coffee maker" price="From USD 10" img={tree} />
-          </ProductContainer>
-        </div>
-      </Marketing>
+      {marketingData.map((marketing, marketingIndex) => (
+        <Marketing key={marketingIndex}>
+          <Source
+            key={marketingIndex}
+            img={marketing.sourceImg}
+            alt={marketing.sourceAlt}
+            title={marketing.sourceTitle}
+            btn={marketing.sourceBtn}
+          />
 
-      <Marketing>
-        <Source
-          img={source}
-          alt="source"
-          title="Consumer electronics and gadgets"
-          btn="Source now"
-        />
+          <div>
+            {marketing.productContainers.map(
+              (productContainer, productContainerIndex) => (
+                <ProductContainer key={productContainerIndex}>
+                  {productContainer.map((product, productIndex) => (
+                    <Product
+                      key={productIndex}
+                      title={product.title}
+                      price={product.price}
+                      img={product.img}
+                    />
+                  ))}
+                </ProductContainer>
+              )
+            )}
+          </div>
+        </Marketing>
+      ))}
 
-        <div>
-          <ProductContainer>
-            <Product title="Smart watches" price="From USD 19" img={watch} />
-            <Product title="Cameras" price="From USD 89" img={camera} />
-            <Product
-              title="Headphones"
-              price="From USD 10"
-              img={whiteheadphone}
-            />
-            <Product title="Smart watches" price="From USD 90" img={boiler} />
-          </ProductContainer>
-          <ProductContainer>
-            <Product title="Gaming set" price="From USD 35" img={headphone} />
-            <Product title="Laptops & PC" price="From USD 340" img={laptop} />
-            <Product
-              title="Smartphones"
-              price="From USD 19"
-              img={Smartphones}
-            />
-            <Product
-              title="Electric kattle"
-              price="From USD 240"
-              img={electrecKatra}
-            />
-          </ProductContainer>
-        </div>
-      </Marketing>
       <Request />
       <Recommendeditems>
         <h2>Recommended items</h2>
@@ -280,30 +349,15 @@ function Alibaba() {
       <Services>
         <h3>Our extra services</h3>
         <AllServices>
-          <Service
-            Serimg={industry}
-            alt="industry"
-            Sertitle="Source from Industry Hubs"
-            icon={searchIcon}
-          />
-          <Service
-            Serimg={product}
-            alt="product"
-            Sertitle="Customize Your Products"
-            icon={prodIcon}
-          />
-          <Service
-            Serimg={fly}
-            alt="industry"
-            Sertitle="Fast, reliable shipping by ocean or air"
-            icon={sentIcon}
-          />
-          <Service
-            Serimg={product2}
-            alt="product2"
-            Sertitle="Product monitoring and inspection"
-            icon={monitorIcon}
-          />
+          {services.map((service, index) => (
+            <Service
+              key={index}
+              Serimg={service.img}
+              alt={service.alt}
+              Sertitle={service.title}
+              icon={service.icon}
+            />
+          ))}
         </AllServices>
       </Services>
 

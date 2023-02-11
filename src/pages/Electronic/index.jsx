@@ -21,6 +21,38 @@ import { StyledLink } from "../Signin/style";
 import { ShowPages } from "../../components/ShowPages";
 
 function Electronic() {
+  const filters = [
+    {
+      name: "Samsung",
+      image: x,
+      alt: "x",
+    },
+    {
+      name: "Apple",
+      image: x,
+      alt: "x",
+    },
+    {
+      name: "Poco",
+      image: x,
+      alt: "x",
+    },
+    {
+      name: "Metallic",
+      image: x,
+      alt: "x",
+    },
+    {
+      name: "4 star",
+      image: x,
+      alt: "x",
+    },
+    {
+      name: "3 star",
+      image: x,
+      alt: "x",
+    },
+  ];
   return (
     <Store>
       <Header />
@@ -30,31 +62,12 @@ function Electronic() {
           <Verify />
 
           <AllKinds>
-
-            <Fillters>
-              <span>Samsung</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
-            <Fillters>
-              <span>Apple</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
-            <Fillters>
-              <span>Poco</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
-            <Fillters>
-              <span>Metallic</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
-            <Fillters>
-              <span>4 star</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
-            <Fillters>
-              <span>3 star</span>
-              <img src={x} alt={"x"} />
-            </Fillters>
+            {filters.map((filter) => (
+              <Fillters key={filter.name}>
+                <span>{filter.name}</span>
+                <img src={filter.image} alt={filter.alt} />
+              </Fillters>
+            ))}
             <StyledLink>Clear all filter</StyledLink>
           </AllKinds>
           <ElectronicCards>
@@ -97,24 +110,22 @@ function Electronic() {
               <ElectronicCard
                 ImgCard={imgcard2}
                 ElectronicPriceCard="$998.00"
-                ElectronicTitleCard="Canon Cmera EOS 2000, Black 10x zoom"
+                ElectronicTitleCard="Canon Cmera EOS 2000,Black 10x zoom"
               />
               <ElectronicCard
                 ImgCard={imgcard6}
                 ElectronicPriceCard="$998.00"
-                ElectronicTitleCard="Canon Cmera EOS 2000, Black 10x zoom"
+                ElectronicTitleCard="Canon Cmera EOS 2000,Black 10x zoom"
               />
               <ElectronicCard
                 ImgCard={imgcard7}
                 ElectronicPriceCard="$998.00"
-                ElectronicTitleCard="Canon Cmera EOS 2000, Black 10x zoom"
+                ElectronicTitleCard="Canon Cmera EOS 2000,Black 10x zoom"
               />
             </div>
-            
           </ElectronicCards>
-        <ShowPages />
+          <ShowPages />
         </div>
-
       </Mainstore>
       <Subscribe />
       <Footer />

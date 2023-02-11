@@ -1,6 +1,5 @@
-import useAuth from "../hooks/usaAuth";
+import useAuth from "../hooks/useAuth";
 import React, { createContext, useContext } from "react";
-
 
 export const AuthContext = createContext(null);
 
