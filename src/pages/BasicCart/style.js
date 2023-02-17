@@ -13,7 +13,6 @@ export const CartPage = styled.div`
   margin: 20px auto;
 
   h3 {
-    width: 127px;
     height: 32px;
 
     font-family: "Arial";
@@ -34,11 +33,8 @@ export const SillCart = styled.div`
 
 export const AllCarts = styled.div`
   padding: 40px;
-  display: flex;
-  flex-direction: column;
   gap: 20px;
   width: 990px;
-  height: 700px;
   border: 1px solid #e3e8ee;
   border-radius: 6px;
   background-color: ${(props) => props.theme.pallet.cart};
@@ -50,7 +46,7 @@ export const AllCartsBtns = styled.div`
 `;
 
 export const BackBtn = styled.button`
-  img {
+  & img {
     vertical-align: middle;
     margin-right: 10px;
   }
@@ -62,7 +58,7 @@ export const BackBtn = styled.button`
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
-
+  cursor: pointer;
   color: #ffffff;
 `;
 export const TaxandCoupon = styled.div`
@@ -221,7 +217,10 @@ export const Inquires = styled.div`
 `;
 
 export const Inquire = styled.div`
-  div p {
+  display: flex;
+  gap: 10px;
+  
+  div p{
     font-family: "Arial";
     font-weight: 400;
     font-size: 16px;
@@ -238,8 +237,7 @@ export const Inquire = styled.div`
     letter-spacing: -0.2px;
     color: ${(props) => props.theme.pallet.grey};
   }
-  display: flex;
-  gap: 10px;
+
 `;
 
 export const Inquireimg = styled.div`

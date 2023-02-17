@@ -173,7 +173,11 @@ export const ProductContainer = styled.div`
   display: flex;
 `;
 export const Recommendeditems = styled.div`
-  h2 {
+  margin-top: 20px;
+  width: 1350px;
+  margin: 0 auto;
+
+  & h2 {
     margin-top: 80px;
 
     font-family: "Arial";
@@ -181,17 +185,15 @@ export const Recommendeditems = styled.div`
     font-size: 24px;
     line-height: 32px;
   }
-  margin-top: 20px;
-  width: 1350px;
-  margin: 0 auto;
+  & div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+  }
 `;
 
-export const ItemContainer = styled.div`
-  display: flex;
-  gap: 20px;
-`;
 export const Services = styled.div`
-  margin: 20px auto;
+  margin: 60px auto;
   width: 1350px;
   display: flex;
   flex-direction: column;
@@ -202,6 +204,7 @@ export const Services = styled.div`
     font-size: 24px;
     line-height: 32px;
     letter-spacing: -0.2px;
+    margin-bottom: 10px;
 
     color: ${(props) => props.theme.pallet.main};
   }
@@ -213,6 +216,8 @@ export const AllServices = styled.div`
 `;
 
 export const Suppliers = styled.div`
+  width: 1342px;
+  margin: 60px auto;
   h3 {
     font-family: "Arial";
     font-weight: 600;
@@ -223,12 +228,9 @@ export const Suppliers = styled.div`
     margin-bottom: 40px;
     color: ${(props) => props.theme.pallet.main};
   }
-  padding: 16px 0;
-  width: 1340px;
-  margin: 0 auto;
 `;
 
 export const AllSuppliers = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 70px;
 `;

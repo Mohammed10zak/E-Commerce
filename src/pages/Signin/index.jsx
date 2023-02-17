@@ -84,6 +84,11 @@ function Signin() {
           password: password,
         });
         if (res) {
+
+          setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+        
+
           setToken(res.data.token);
           setErrors([]);
           setLoading(false);

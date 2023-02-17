@@ -12,44 +12,39 @@ export const Cardelectronic = styled.div`
   height: 430px;
 
   border: 1px solid #e3e8ee;
-
+  padding: 10px;
   border-radius: 6px;
   margin-bottom: 20px;
 `;
 
 export const ImgElediv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-content: center;
-
-  width: 320px;
+  width: 300px;
   height: 220px;
-  /* padding: 20px 0; */
 
   border-bottom: 1px solid #eff2f4;
 
-  img {
+  & img {
     width: 220px;
     height: 180px;
+    margin-left: 40px;
   }
 `;
 
-export const  About =styled.div`
-width: 100px;
-height: 100px;
-display: flex;
-flex-direction: column;
-gap:10px;
-padding:16px;
-`
+export const About = styled.div`
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+`;
 
 export const ElectronicPriceCard = styled.h5`
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
-  
-   color: ${(props) => props.theme.pallet.main};
 
+  color: ${(props) => props.theme.pallet.main};
 `;
 
 export const ElectronicTitleCard = styled.p`
@@ -62,11 +57,23 @@ export const ElectronicTitleCard = styled.p`
   letter-spacing: -0.2px;
 
   color: ${(props) => props.theme.pallet.grey};
-
 `;
 
 export const Elelike = styled.img`
   position: absolute;
   left: 270px;
   top: 290px;
+`;
+
+export const AddRemoveBtn2 = styled.button`
+  & img {
+    width: 40px;
+    height: 40px;
+  }
+  position: absolute;
+  left: 220px;
+  top: 290px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 `;

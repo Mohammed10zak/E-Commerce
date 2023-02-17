@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Cardstrore = styled.div`
+export const Cardstore = styled.div`
   position: relative;
-
   display: flex;
   gap: 10px;
   font-family: "Arial";
@@ -16,15 +15,33 @@ export const Cardstrore = styled.div`
   background-color: ${(props) => props.theme.pallet.cart};
 `;
 
+export const AddRemoveBtn = styled.button`
+  & img {
+    width: 40px;
+    height: 40px;
+  }
+  position: absolute;
+  top: 27px;
+  left: 920px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
 export const ImgCarddiv = styled.div`
   width: 185px;
   height: 205px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ImgCard = styled.img`
   margin-top: 10px;
+  width: 170px;
+
   @media only screen and (max-width: 768px) {
-    width: 150px;
+    width: 140px;
   }
 `;
 
@@ -35,6 +52,7 @@ export const AboutList = styled.div`
   margin-top: 10px; ;
 `;
 export const TitleCard = styled.p`
+  margin-top: 20px;
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
