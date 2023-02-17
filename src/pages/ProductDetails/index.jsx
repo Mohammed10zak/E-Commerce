@@ -7,11 +7,7 @@ import { Footer } from "../../components/Footer";
 import { MayProduct } from "../../sections/MayProduct/index";
 
 import clothing1 from "../../Images/clothing.png";
-import clothing2 from "../../Images/clothing2.png";
-import clothing3 from "../../Images/clothing3.png";
-import clothing4 from "../../Images/clothing4.png";
-import clothing5 from "../../Images/clothing5.png";
-import clothing6 from "../../Images/clothing6.png";
+
 import trueIcon from "../../Images/true.png";
 import msg from "../../Images/msg1.png";
 import sold from "../../Images/sold.png";
@@ -20,19 +16,6 @@ import verify from "../../Images/verify.png";
 import worldwide from "../../Images/worldwide.png";
 import likee from "../../Images/likee.png";
 import truee from "../../Images/truee.png";
-import jacket1 from "../../Images/jacket1.png";
-import jacket2 from "../../Images/jacket2.png";
-import jacket3 from "../../Images/jacket3.png";
-import jacket4 from "../../Images/jacket4.png";
-import jacket5 from "../../Images/jacket5.png";
-import related1 from "../../Images/related1.png";
-import related2 from "../../Images/related2.png";
-import related3 from "../../Images/related3.png";
-import related4 from "../../Images/related4.png";
-import related5 from "../../Images/related5.png";
-import related6 from "../../Images/related6.png";
-import fillstar from "../../Images/fillstar.png";
-import star from "../../Images/star.png";
 
 import {
   Additional,
@@ -74,7 +57,13 @@ import {
   SupplierInfo,
   SupplierProfile,
 } from "./style";
-import { Rating } from "../../sections/StroeCard/style";
+import { Rating } from "../../sections/StoreCard/style";
+import {
+  clothingData,
+  mayProducts,
+  ratingData,
+  relatedProduct,
+} from "../../mock/data";
 
 function ProductDetails() {
   const [clothingSrc, setClothingSrc] = useState(clothing1);
@@ -92,12 +81,14 @@ function ProductDetails() {
             <img src={clothingSrc} alt="clothing" />
           </Clothing>
           <SmallClothing>
-            <img src={clothing1} alt="clothing" onClick={handleClick} />
-            <img src={clothing2} alt="clothing" onClick={handleClick} />
-            <img src={clothing3} alt="clothing" onClick={handleClick} />
-            <img src={clothing4} alt="clothing" onClick={handleClick} />
-            <img src={clothing5} alt="clothing" onClick={handleClick} />
-            <img src={clothing6} alt="clothing" onClick={handleClick} />
+            {clothingData.map((clothing, index) => (
+              <img
+                key={index}
+                src={clothing.src}
+                alt={clothing.alt}
+                onClick={handleClick}
+              />
+            ))}
           </SmallClothing>
         </Clothings>
 
@@ -111,12 +102,14 @@ function ProductDetails() {
           </ClothisTitle>
           <Statistic>
             <Rating>
-              {" "}
-              <img src={fillstar} alt="rating" id="rating2" />
-              <img src={fillstar} alt="rating" />
-              <img src={fillstar} alt="rating" />
-              <img src={fillstar} alt="rating" />
-              <img src={star} alt="rating" />
+              {ratingData.map((rating, index) => (
+                <img
+                  key={index}
+                  src={rating.src}
+                  alt={rating.alt}
+                  id={index === 1 ? "rating2" : null}
+                />
+              ))}
               <span>9.3</span>
             </Rating>
             <span>
@@ -282,66 +275,27 @@ function ProductDetails() {
 
         <PossipleProd>
           <h4>You may like</h4>
-          <MayProduct
-            img={jacket1}
-            title="Apple Watch Series Space Gray"
-            price="$7.00 - $99.50"
-          />
-          <MayProduct
-            img={jacket2}
-            title="Apple Watch Series Space Gray"
-            price="$7.00 - $99.50"
-          />
-          <MayProduct
-            img={jacket3}
-            title="Apple Watch Series Space Gray"
-            price="$7.00 - $99.50"
-          />
-          <MayProduct
-            img={jacket4}
-            title="Apple Watch Series Space Gray"
-            price="$7.00 - $99.50"
-          />
-          <MayProduct
-            img={jacket5}
-            title="Apple Watch Series Space Gray"
-            price="$7.00 - $99.50"
-          />
+          {mayProducts.map((product, index) => (
+            <MayProduct
+              key={index}
+              img={product.img}
+              title={product.title}
+              price={product.price}
+            />
+          ))}
         </PossipleProd>
       </Descriptions>
       <Related>
         <h4>Related products</h4>
         <AllRelated>
-          <RelatedProducts
-            img={related1}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
-          <RelatedProducts
-            img={related2}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
-          <RelatedProducts
-            img={related3}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
-          <RelatedProducts
-            img={related4}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
-          <RelatedProducts
-            img={related5}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
-          <RelatedProducts
-            img={related6}
-            title="Xiaomi Redmi 8 Original "
-            price="$32.00 - $40.00"
-          />
+          {relatedProduct.map((product, index) => (
+            <RelatedProducts
+              key={index}
+              img={product.img}
+              title={product.title}
+              price={product.price}
+            />
+          ))}
         </AllRelated>
       </Related>
       <Discount />

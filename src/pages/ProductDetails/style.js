@@ -46,6 +46,7 @@ export const SmallClothing = styled.div`
   gap: 10px;
   width: 350px;
   text-align: center;
+  margin: 10px 0;
   cursor: pointer;
   & img {
     max-width: 50px;

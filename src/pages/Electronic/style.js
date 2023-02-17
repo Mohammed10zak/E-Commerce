@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const ElectronicCards = styled.div`
+
   display: flex;
+  flex-wrap: wrap;
+  width: 1042px;
   gap: 40px;
   margin: 20px 0 10px 5px;
 `;

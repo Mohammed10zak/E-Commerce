@@ -5,8 +5,9 @@ export const Cartt = styled.div`
   display: flex;
   gap: 10px;
   width: 900px;
-  height: 170px;
+  margin-top: 10px;
   border-bottom: 1px solid #e3e8ee;
+  margin-bottom: 10px;
 `;
 export const Imgcart = styled.div`
   display: flex;
@@ -30,10 +31,10 @@ export const CartTitle = styled.p`
   font-size: 16px;
   color: ${(props) => props.theme.pallet.main};
 
-  margin: 8px 0;    
+  margin: 8px 0;
 `;
 export const Cartdesc = styled.span`
-  width: 280px;
+  width: 450px;
   font-family: "Arial";
   font-style: normal;
   font-weight: 400;

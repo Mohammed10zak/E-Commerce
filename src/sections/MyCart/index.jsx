@@ -1,4 +1,6 @@
 import React from "react";
+
+//styled components
 import {
   CartBtns,
   Cartdesc,
@@ -12,23 +14,30 @@ import {
   SaveBtn,
 } from "./style";
 
-export const MyCart = (props) => {
+export const MyCart = ({ product, onRemove  }) => {
+
+  
   return (
     <Cartt>
       <Imgcart>
-        <img src={props.img} alt="imgcart" />
+        <img src={product.ImgCard} alt="imgcart" />
       </Imgcart>
       <CartInfo>
-        <CartTitle>{props.title}</CartTitle>
-        <Cartdesc>{props.desc}</Cartdesc>
+        <CartTitle>{product.ElectronicTitleCard}</CartTitle>
+        <Cartdesc>{product.descriptionCard}</Cartdesc>
         <CartBtns>
-          <RemoveBtn>Reomve</RemoveBtn>
-          <SaveBtn>Save for later</SaveBtn>
+          <RemoveBtn onClick={() => onRemove(product.id)}>Remove</RemoveBtn>
+          <SaveBtn >Save for later</SaveBtn>
         </CartBtns>
       </CartInfo>
-      <CartPrice>{props.price}</CartPrice>
+      <CartPrice>{product.ElectronicPriceCard}</CartPrice>
       <QuantityProd>
-        <option>Qty:{props.quantity}</option>
+        <option>Qty</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5 </option>
       </QuantityProd>
     </Cartt>
   );

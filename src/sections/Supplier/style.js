@@ -4,12 +4,12 @@ export const SupplierRegion = styled.div`
   display: flex;
   width: 220px;
   padding: 10px;
-  gap: 10px;
+  gap: 20px;
   img {
     width: 45px;
   }
 
-  p {
+  & p {
     font-family: "Arial";
     font-weight: 400;
     font-size: 16px;

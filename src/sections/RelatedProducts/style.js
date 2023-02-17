@@ -4,7 +4,8 @@ export const RelatedProduct = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+  
+    
   div {
     display: flex;
     flex-direction: column;

@@ -5,6 +5,7 @@ import { themeContext } from "./context/themeContext";
 import { lightTheme } from "./global/theme";
 import { GlobalStyle } from "./global/style";
 import { useAuthContext } from "./context/AuthContext";
+import ProductProvider from "./context/productContext";
 
 const Signin = lazy(() => import("./pages/Signin/index"));
 const Signup = lazy(() => import("./pages/Signup/index"));
@@ -29,10 +30,12 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+
       <themeContext.Provider value={[theme, setTheme]}>
         <div className="App">
           <GlobalStyle />
           <Suspense fallback={<div>Loading...</div>}>
+            <ProductProvider>
             <Routes>
               <Route index element={<Navigate to="/signin" />} />
               <Route
@@ -70,6 +73,7 @@ function App() {
                 element={authorized ? <Cart /> : <Navigate to="/signin" />}
               />
             </Routes>
+      </ProductProvider>
           </Suspense>
         </div>
       </themeContext.Provider>
