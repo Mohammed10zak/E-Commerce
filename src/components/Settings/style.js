@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-
 export const AllSettings = styled.div`
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
   margin-top: 10px;
+  @media (max-width: 768px) {
+    /* apply styles for screens smaller than 768px */
+    justify-content: center; /* center items horizontally */
+    display: inline;
+  }
 `;
 
 export const Setting = styled.div`
@@ -19,6 +24,10 @@ export const Setting = styled.div`
     text-align: center;
 
     color: #8b96a5;
+    @media (max-width: 768px) {
+    /* apply styles for screens smaller than 768px */
+   display: flex;
+  }
   }
 
   img {

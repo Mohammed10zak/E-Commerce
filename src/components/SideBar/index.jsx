@@ -43,6 +43,15 @@ export const SideBar = () => {
       content: <p>Modern tech</p>,
     },
   ];
+
+  const Checkbox = ({ id, label }) => {
+    return (
+      <div>
+        <input type="checkbox" id={id} />
+        <label htmlFor={id}>{label}</label>
+      </div>
+    );
+  };
   return (
     <Sidebar>
       <Accordion>
@@ -62,29 +71,22 @@ export const SideBar = () => {
       </Accordion>
 
       <Brands>
-        <p>Brands</p>
-        <div>
-          <input type="checkbox" id="sam" />
-          <label htmlFor="sam">Samsung</label>
-        </div>
-        <div>
-          <input type="checkbox" id="apple" />
-          <label htmlFor="apple">Apple</label>
-        </div>
-        <div>
-          <input type="checkbox" id="huawi" />
-          <label htmlFor="huawi">Huawei</label>
-        </div>
-        <div>
-          <input type="checkbox" id="Pocco" />
-          <label htmlFor="Pocco">Pocco</label>
-        </div>
-        <div>
-          <input type="checkbox" id="Lenovo" />
-          <label htmlFor="Lenovo">Lenovo</label>
-        </div>
-      </Brands>
+  <p>Brands</p>
+  <Checkbox id="sam" label="Samsung" />
+  <Checkbox id="apple" label="Apple" />
+  <Checkbox id="huawi" label="Huawei" />
+  <Checkbox id="Pocco" label="Pocco" />
+  <Checkbox id="Lenovo" label="Lenovo" />
+</Brands>
 
+<Features>
+  <p>Features</p>
+  <Checkbox id="sam" label="Samsung" />
+  <Checkbox id="apple" label="Apple" />
+  <Checkbox id="huawi" label="Huawei" />
+  <Checkbox id="Pocco" label="Pocco" />
+  <Checkbox id="Lenovo" label="Lenovo" />
+</Features>
       <Features>
         <p>Features</p>
         <div>
