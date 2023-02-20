@@ -7,6 +7,7 @@ import passwordshow from "../../Images/eye.png";
 import {
   CheckedInputWrapper,
   ErrorMessage,
+  Errors,
   InputWrapper,
   Register,
   StyledForm,
@@ -18,7 +19,6 @@ import {
   ShowPassword,
   StyledButton,
   StyledImg,
-  StyledLinkhome,
   StyledOR,
   StyledLink,
 } from "./style";
@@ -84,10 +84,8 @@ function Signin() {
           password: password,
         });
         if (res) {
-
           setToken(res.data.token);
           localStorage.setItem("token", res.data.token);
-        
 
           setToken(res.data.token);
           setErrors([]);
@@ -103,14 +101,17 @@ function Signin() {
 
   return (
     <div>
+      <Errors>
+        {errors.map((error, index) => {
+          return (
+            <ErrorMessage key={index}>
+              <li>{error}</li>
+            </ErrorMessage>
+          );
+        })}
+      </Errors>
       <StyledForm onSubmit={handleSubmit}>
         <Register>Sign in</Register>
-
-        <p>
-          {errors.map((error, index) => {
-            return <ErrorMessage key={index}>{error}</ErrorMessage>;
-          })}
-        </p>
 
         <InputWrapper>
           <label htmlFor="username">Username</label>
@@ -151,9 +152,8 @@ function Signin() {
         </CheckedInputWrapper>
 
         <SubmitButton type="submit">
-          <StyledLinkhome>Log In</StyledLinkhome>
+          {loading ? "loading..." : "  Log In"}
         </SubmitButton>
-        <p>{loading ? "loading..." : ""}</p>
 
         <StyledOR>
           <div></div> <span>OR</span> <div></div>
