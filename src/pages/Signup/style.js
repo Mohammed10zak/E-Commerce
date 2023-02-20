@@ -17,6 +17,13 @@ background: ${(props) => props.theme.pallet.cart};
   margin: 40px auto;
 }
 `;
+export const Errors =styled.div`
+position: absolute;
+width: 400px;
+
+margin: 80px 100px;
+
+`
 
 export const Register = styled.h3`
   padding-left: 20px;

@@ -9,6 +9,7 @@ import { AlredyAccount, StyledLink } from "../Signin/style";
 import {
   CheckedInputWrapper,
   ErrorMessage,
+  Errors,
   InputFullName,
   InputWrapper,
   Line,
@@ -52,9 +53,9 @@ function Signup() {
       .required("Name is required"),
     surname: yup
       .string()
-      .min(6, "Name must be at least 6 characters")
-      .max(16, "Name must be no more than 16 characters")
-      .required("Name is required"),
+      .min(6, "SurName must be at least 6 characters")
+      .max(16, "SurName must be no more than 16 characters")
+      .required("SurName is required"),
     phone: yup.string().matches(phoneRegExp, "Phone number is not valid"),
 
     email: yup.string().email("Invalid email").required("Email is required"),
@@ -88,45 +89,54 @@ function Signup() {
     if (id === "phoneA") setSelectedOption(e.target.value);
   };
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      schema
-        .validate(
-          {
-            name,
-            email,
-            password,
-            surname,
-            phone,
-            confirmpass,
-            checked,
-            selectedOption,
-          },
-          { abortEarly: false }
-        )
-        .then(async () => {
-          const res = await axios.post(`${API_URL}/users/signup`, {
-            name: name,
-            email: email,
-            password: password,
-          });
-          if (res) {
-            setToken(res.data.token);
-            localStorage.setItem("token", res.data.token);
-            setUsername(res.data.name);
-            localStorage.setItem("name", res.data.name);
-            setErrors([]);
-            setLoading(false);
-            setAuthorized(true);
-          }
-        })
-        .catch((e) => {
-          setErrors(e.errors || [e.message]);
-          setLoading(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    schema
+      .validate(
+        {
+          name,
+          email,
+          password,
+          surname,
+          phone,
+          confirmpass,
+          checked,
+          selectedOption,
+        },
+        { abortEarly: false }
+      )
+      .then(async () => {
+        const res = await axios.post(`${API_URL}/users/signup`, {
+          name: name,
+          email: email,
+          password: password,
         });
-    };
+        if (res) {
+          setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          setUsername(res.data.name);
+          localStorage.setItem("name", res.data.name);
+          setErrors([]);
+          setLoading(false);
+          setAuthorized(true);
+        }
+      })
+      .catch((e) => {
+        setErrors(e.errors || [e.message]);
+        setLoading(true);
+      });
+  };
   return (
     <div>
+      <Errors>
+        {errors.map((error, index) => {
+          return (
+            <ErrorMessage key={index}>
+              <li>{error}</li>
+            </ErrorMessage>
+          );
+        })}
+      </Errors>
       <StyledForm onSubmit={handleSubmit}>
         <Register>Register</Register>
 
@@ -140,11 +150,6 @@ function Signup() {
               value={name}
               placeholder="Type here"
             />
-            <p>
-              {errors.map((error, index) => {
-                return <ErrorMessage key={index}>{error}</ErrorMessage>;
-              })}
-            </p>
           </div>
 
           <div>
@@ -213,10 +218,9 @@ function Signup() {
           />
         </InputWrapper>
 
-        <SubmitButton type="submit" >
-          Register now
+        <SubmitButton type="submit">
+          {loading ? "loading..." : " Register now"}
         </SubmitButton>
-        <p>{loading?"loading...":""}</p>
 
         <CheckedInputWrapper>
           <input
@@ -236,7 +240,7 @@ function Signup() {
 
         <AlredyAccount>
           Already have an accaunt?
-          <StyledLink to="/signin"> Logn in</StyledLink>
+          <StyledLink to="/signin"> Log in</StyledLink>
         </AlredyAccount>
       </StyledForm>
       <FormFooter />
