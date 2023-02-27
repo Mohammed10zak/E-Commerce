@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import rightpagination from "../Images/right.png";
-import leftpagination from "../Images/left.png";
+import rightpagination from "../../Images/right.png";
+import leftpagination from "../../Images/left.png";
 import {
   PaginationContainer,
   PaginationNumber,
   PaginationSelect,
-} from "./style";
+} from "../style";
 
 export const ShowPages = () => {
   const [selectedNumber, setSelectedNumber] = useState(1);

@@ -54,8 +54,7 @@ import { useProductContext } from "./../../context/productContext";
 function Cart() {
   const PaymentMethod = ({ src, alt }) => <img src={src} alt={alt} />;
 
-  const { state, removeFromCart, removeAllCarts  } =
-    useProductContext();
+  const { state, removeFromCart, removeAllCarts } = useProductContext();
 
   const handleRemove = (productId) => {
     removeFromCart(productId);
@@ -65,7 +64,6 @@ function Cart() {
     removeAllCarts();
   };
 
- 
   return (
     <div>
       <StyledNavCart>

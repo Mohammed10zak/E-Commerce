@@ -3,7 +3,6 @@ import React from "react";
 import { Header } from "../../components/Header";
 import { SideBar } from "../../components/SideBar/index";
 import Verify from "../../components/Verify/index";
-import { ShowPages } from "../../components/ShowPages";
 import { ElectronicCard } from "../../sections/ElectronicCard";
 import { Subscribe } from "../../components/Subscribe";
 import { Footer } from "../../components/Footer";
@@ -13,6 +12,7 @@ import { StyledLink } from "../Signin/style";
 import { Mainstore, Store } from "./../TechStorelist/style";
 
 import { electronicCardsData, filters } from "../../mock/data";
+import { ShowPages } from "../../components/ShowPages";
 
 function Electronic() {
   return (

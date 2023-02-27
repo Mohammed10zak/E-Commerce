@@ -2,12 +2,12 @@ import React from "react";
 import { AllSettings, Setting } from "./style";
 import { NavLink } from "react-router-dom";
 import ToggleButton from "./../ToggleButton/index";
-import LogOut from "./../LogOut";
 
 import profile from "../../Images/profile.svg";
 import msg from "../../Images/msg.svg";
 import cart from "../../Images/cart.svg";
 import heart from "../../Images/heart.svg";
+import LogOut from './../LogOut/index';
 
 const Settings = () => {
   return (

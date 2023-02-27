@@ -6,6 +6,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Loading from "../components/Loading";
 
 import { useAuthContext } from "../context/AuthContext";
+import ProtectedRoute from "./../components/ProtectedRoute/index";
 
 const Signin = lazy(() => import("../pages/Signin/index"));
 const Signup = lazy(() => import("../pages/Signup/index"));
@@ -30,6 +31,7 @@ const Routers = () => {
     <Suspense fallback={<Loading />}>
       <Routes>
         <Route index element={<Navigate to="/signin" />} />
+
         <Route
           path="/signin"
           element={authorized ? <Navigate to="/alibaba" /> : <Signin />}
@@ -38,26 +40,17 @@ const Routers = () => {
           path="/signup"
           element={authorized ? <Navigate to="/alibaba" /> : <Signup />}
         />
-        <Route
-          path="/alibaba"
-          element={authorized ? <Alibaba /> : <Navigate to="/signin" />}
-        />
-        <Route
-          path="/techstorelist"
-          element={authorized ? <TechStoreList /> : <Navigate to="/signin" />}
-        />
-        <Route
-          path="/electronic"
-          element={authorized ? <Electronic /> : <Navigate to="/electronic" />}
-        />
-        <Route
-          path="/productdetails"
-          element={authorized ? <ProductDetails /> : <Navigate to="/signin" />}
-        />
-        <Route
-          path="/cartpage"
-          element={authorized ? <Cart /> : <Navigate to="/signin" />}
-        />
+
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route path="/alibaba" element={<Alibaba />} />
+
+          <Route path="/techstorelist" element={<TechStoreList />} />
+          <Route path="/electronic" element={<Electronic />} />
+
+          <Route path="productdetails" element={<ProductDetails />} />
+          <Route path="/cartpage" element={<Cart />} />
+        </Route>
+        <Route path="/*" element={<h3>Page not Found</h3>} />
       </Routes>
     </Suspense>
   );
